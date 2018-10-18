@@ -9,6 +9,13 @@
 import UIKit
 
 class CreateMenuViewController: UIViewController {
+    
+    var email: String!
+    var password: String!
+    var restaurantName: String!
+    var addressName: String!
+    var phoneNumber: String!
+    var restaurantImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
