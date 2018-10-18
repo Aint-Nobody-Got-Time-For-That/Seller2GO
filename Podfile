@@ -12,14 +12,4 @@ target 'seller2GO' do
 	pod 'PKHUD', '~> 5.0'
 	pod 'AlamofireImage', '~> 3.3'
 
-  target 'seller2GOTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'seller2GOUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

@@ -13,44 +13,17 @@
 		34253EFF21781DEA00C2317A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253EFD21781DEA00C2317A /* Main.storyboard */; };
 		34253F0121781DEF00C2317A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0021781DEF00C2317A /* Assets.xcassets */; };
 		34253F0421781DEF00C2317A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0221781DEF00C2317A /* LaunchScreen.storyboard */; };
-		34253F0F21781DEF00C2317A /* seller2GOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34253F0E21781DEF00C2317A /* seller2GOTests.swift */; };
-		34253F1A21781DEF00C2317A /* seller2GOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34253F1921781DEF00C2317A /* seller2GOUITests.swift */; };
-		890CC3C95CD1970DB9625982 /* Pods_seller2GOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DB991442547F4AE83F6160 /* Pods_seller2GOTests.framework */; };
-		D053D7A06C8239DD1D2DCCDD /* Pods_seller2GOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4A79AECD6D0D3F178FBBE /* Pods_seller2GOUITests.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		34253F0B21781DEF00C2317A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 34253EEE21781DEA00C2317A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 34253EF521781DEA00C2317A;
-			remoteInfo = seller2GO;
-		};
-		34253F1621781DEF00C2317A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 34253EEE21781DEA00C2317A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 34253EF521781DEA00C2317A;
-			remoteInfo = seller2GO;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		012EAD965085E1043229603D /* Pods_seller2GO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_seller2GO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34253EF621781DEA00C2317A /* seller2GO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seller2GO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34253EF621781DEA00C2317A /* Seller2GO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seller2GO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34253EF921781DEA00C2317A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34253EFB21781DEA00C2317A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34253EFE21781DEA00C2317A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34253F0021781DEF00C2317A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34253F0321781DEF00C2317A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34253F0521781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34253F0A21781DEF00C2317A /* seller2GOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seller2GOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		34253F0E21781DEF00C2317A /* seller2GOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seller2GOTests.swift; sourceTree = "<group>"; };
-		34253F1021781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34253F1521781DEF00C2317A /* seller2GOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seller2GOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		34253F1921781DEF00C2317A /* seller2GOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seller2GOUITests.swift; sourceTree = "<group>"; };
-		34253F1B21781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C1B1A7C6071E949D39EB793 /* Pods-seller2GOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOUITests/Pods-seller2GOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		62A2D403C07BF974AE32CE25 /* Pods-seller2GO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GO.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GO/Pods-seller2GO.release.xcconfig"; sourceTree = "<group>"; };
 		643F47EE56149E0F4814A047 /* Pods-seller2GOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOTests/Pods-seller2GOTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,22 +40,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25DFE0983EF50D3D9859A43B /* Pods_seller2GO.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		34253F0721781DEF00C2317A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				890CC3C95CD1970DB9625982 /* Pods_seller2GOTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		34253F1221781DEF00C2317A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D053D7A06C8239DD1D2DCCDD /* Pods_seller2GOUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				34253EF821781DEA00C2317A /* seller2GO */,
-				34253F0D21781DEF00C2317A /* seller2GOTests */,
-				34253F1821781DEF00C2317A /* seller2GOUITests */,
 				34253EF721781DEA00C2317A /* Products */,
 				1E5FF53F54A6147AC3A77F5A /* Pods */,
 				2AC53155E6AFAF0268068DFE /* Frameworks */,
@@ -127,9 +82,7 @@
 		34253EF721781DEA00C2317A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34253EF621781DEA00C2317A /* seller2GO.app */,
-				34253F0A21781DEF00C2317A /* seller2GOTests.xctest */,
-				34253F1521781DEF00C2317A /* seller2GOUITests.xctest */,
+				34253EF621781DEA00C2317A /* Seller2GO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,24 +98,6 @@
 				34253F0521781DEF00C2317A /* Info.plist */,
 			);
 			path = seller2GO;
-			sourceTree = "<group>";
-		};
-		34253F0D21781DEF00C2317A /* seller2GOTests */ = {
-			isa = PBXGroup;
-			children = (
-				34253F0E21781DEF00C2317A /* seller2GOTests.swift */,
-				34253F1021781DEF00C2317A /* Info.plist */,
-			);
-			path = seller2GOTests;
-			sourceTree = "<group>";
-		};
-		34253F1821781DEF00C2317A /* seller2GOUITests */ = {
-			isa = PBXGroup;
-			children = (
-				34253F1921781DEF00C2317A /* seller2GOUITests.swift */,
-				34253F1B21781DEF00C2317A /* Info.plist */,
-			);
-			path = seller2GOUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,46 +119,8 @@
 			);
 			name = seller2GO;
 			productName = seller2GO;
-			productReference = 34253EF621781DEA00C2317A /* seller2GO.app */;
+			productReference = 34253EF621781DEA00C2317A /* Seller2GO.app */;
 			productType = "com.apple.product-type.application";
-		};
-		34253F0921781DEF00C2317A /* seller2GOTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 34253F2121781DEF00C2317A /* Build configuration list for PBXNativeTarget "seller2GOTests" */;
-			buildPhases = (
-				59AB657D2DB3614DC2973B63 /* [CP] Check Pods Manifest.lock */,
-				34253F0621781DEF00C2317A /* Sources */,
-				34253F0721781DEF00C2317A /* Frameworks */,
-				34253F0821781DEF00C2317A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				34253F0C21781DEF00C2317A /* PBXTargetDependency */,
-			);
-			name = seller2GOTests;
-			productName = seller2GOTests;
-			productReference = 34253F0A21781DEF00C2317A /* seller2GOTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		34253F1421781DEF00C2317A /* seller2GOUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 34253F2421781DEF00C2317A /* Build configuration list for PBXNativeTarget "seller2GOUITests" */;
-			buildPhases = (
-				593B45F8C0F8A8EBE70D8B92 /* [CP] Check Pods Manifest.lock */,
-				34253F1121781DEF00C2317A /* Sources */,
-				34253F1221781DEF00C2317A /* Frameworks */,
-				34253F1321781DEF00C2317A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				34253F1721781DEF00C2317A /* PBXTargetDependency */,
-			);
-			name = seller2GOUITests;
-			productName = seller2GOUITests;
-			productReference = 34253F1521781DEF00C2317A /* seller2GOUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -233,18 +130,10 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Pat Khai";
+				ORGANIZATIONNAME = "Aint Nobody Got Time For That";
 				TargetAttributes = {
 					34253EF521781DEA00C2317A = {
 						CreatedOnToolsVersion = 9.4.1;
-					};
-					34253F0921781DEF00C2317A = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 34253EF521781DEA00C2317A;
-					};
-					34253F1421781DEF00C2317A = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 34253EF521781DEA00C2317A;
 					};
 				};
 			};
@@ -262,8 +151,6 @@
 			projectRoot = "";
 			targets = (
 				34253EF521781DEA00C2317A /* seller2GO */,
-				34253F0921781DEF00C2317A /* seller2GOTests */,
-				34253F1421781DEF00C2317A /* seller2GOUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,20 +163,6 @@
 				34253F0421781DEF00C2317A /* LaunchScreen.storyboard in Resources */,
 				34253F0121781DEF00C2317A /* Assets.xcassets in Resources */,
 				34253EFF21781DEA00C2317A /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		34253F0821781DEF00C2317A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		34253F1321781DEF00C2317A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,50 +223,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-seller2GO/Pods-seller2GO-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		593B45F8C0F8A8EBE70D8B92 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-seller2GOUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59AB657D2DB3614DC2973B63 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-seller2GOTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -406,36 +235,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		34253F0621781DEF00C2317A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				34253F0F21781DEF00C2317A /* seller2GOTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		34253F1121781DEF00C2317A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				34253F1A21781DEF00C2317A /* seller2GOUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		34253F0C21781DEF00C2317A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 34253EF521781DEA00C2317A /* seller2GO */;
-			targetProxy = 34253F0B21781DEF00C2317A /* PBXContainerItemProxy */;
-		};
-		34253F1721781DEF00C2317A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 34253EF521781DEA00C2317A /* seller2GO */;
-			targetProxy = 34253F1621781DEF00C2317A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		34253EFD21781DEA00C2317A /* Main.storyboard */ = {
@@ -584,7 +384,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Seller2GO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -603,95 +403,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Seller2GO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		34253F2221781DEF00C2317A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 643F47EE56149E0F4814A047 /* Pods-seller2GOTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK4V98BSP8;
-				INFOPLIST_FILE = seller2GOTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GOTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/seller2GO.app/seller2GO";
-			};
-			name = Debug;
-		};
-		34253F2321781DEF00C2317A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADD591B1BECAE845DDAF1360 /* Pods-seller2GOTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK4V98BSP8;
-				INFOPLIST_FILE = seller2GOTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GOTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/seller2GO.app/seller2GO";
-			};
-			name = Release;
-		};
-		34253F2521781DEF00C2317A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFDCBD2870EF1D4C332822DB /* Pods-seller2GOUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK4V98BSP8;
-				INFOPLIST_FILE = seller2GOUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GOUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = seller2GO;
-			};
-			name = Debug;
-		};
-		34253F2621781DEF00C2317A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C1B1A7C6071E949D39EB793 /* Pods-seller2GOUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CK4V98BSP8;
-				INFOPLIST_FILE = seller2GOUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = patkhai.seller2GOUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = seller2GO;
 			};
 			name = Release;
 		};
@@ -712,24 +426,6 @@
 			buildConfigurations = (
 				34253F1F21781DEF00C2317A /* Debug */,
 				34253F2021781DEF00C2317A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		34253F2121781DEF00C2317A /* Build configuration list for PBXNativeTarget "seller2GOTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				34253F2221781DEF00C2317A /* Debug */,
-				34253F2321781DEF00C2317A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		34253F2421781DEF00C2317A /* Build configuration list for PBXNativeTarget "seller2GOUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				34253F2521781DEF00C2317A /* Debug */,
-				34253F2621781DEF00C2317A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
