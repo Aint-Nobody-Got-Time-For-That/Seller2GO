@@ -1,0 +1,6 @@
+framework module Pods_seller2GOTests {
+  umbrella header "Pods-seller2GOTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
