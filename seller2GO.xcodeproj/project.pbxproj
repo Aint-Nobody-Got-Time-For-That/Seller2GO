@@ -9,22 +9,28 @@
 /* Begin PBXBuildFile section */
 		25DFE0983EF50D3D9859A43B /* Pods_seller2GO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012EAD965085E1043229603D /* Pods_seller2GO.framework */; };
 		34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34253EF921781DEA00C2317A /* AppDelegate.swift */; };
-		34253EFC21781DEA00C2317A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34253EFB21781DEA00C2317A /* ViewController.swift */; };
 		34253EFF21781DEA00C2317A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253EFD21781DEA00C2317A /* Main.storyboard */; };
 		34253F0121781DEF00C2317A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0021781DEF00C2317A /* Assets.xcassets */; };
 		34253F0421781DEF00C2317A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0221781DEF00C2317A /* LaunchScreen.storyboard */; };
+		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
+		57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */; };
+		57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */; };
+		57CBB6D3217909C0005ECFD7 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6D2217909C0005ECFD7 /* RestaurantDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		012EAD965085E1043229603D /* Pods_seller2GO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_seller2GO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34253EF621781DEA00C2317A /* Seller2GO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seller2GO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34253EF921781DEA00C2317A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		34253EFB21781DEA00C2317A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34253EFE21781DEA00C2317A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34253F0021781DEF00C2317A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34253F0321781DEF00C2317A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34253F0521781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C1B1A7C6071E949D39EB793 /* Pods-seller2GOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOUITests/Pods-seller2GOUITests.release.xcconfig"; sourceTree = "<group>"; };
+		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantViewController.swift; sourceTree = "<group>"; };
+		57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMenuViewController.swift; sourceTree = "<group>"; };
+		57CBB6D2217909C0005ECFD7 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		62A2D403C07BF974AE32CE25 /* Pods-seller2GO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GO.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GO/Pods-seller2GO.release.xcconfig"; sourceTree = "<group>"; };
 		643F47EE56149E0F4814A047 /* Pods-seller2GOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOTests/Pods-seller2GOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD591B1BECAE845DDAF1360 /* Pods-seller2GOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOTests/Pods-seller2GOTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,14 +96,41 @@
 		34253EF821781DEA00C2317A /* seller2GO */ = {
 			isa = PBXGroup;
 			children = (
+				57CBB6C92178FE5F005ECFD7 /* Models */,
+				57CBB6C82178FE5B005ECFD7 /* Views */,
+				57CBB6C72178FE51005ECFD7 /* View Controllers */,
 				34253EF921781DEA00C2317A /* AppDelegate.swift */,
-				34253EFB21781DEA00C2317A /* ViewController.swift */,
 				34253EFD21781DEA00C2317A /* Main.storyboard */,
 				34253F0021781DEF00C2317A /* Assets.xcassets */,
 				34253F0221781DEF00C2317A /* LaunchScreen.storyboard */,
 				34253F0521781DEF00C2317A /* Info.plist */,
 			);
 			path = seller2GO;
+			sourceTree = "<group>";
+		};
+		57CBB6C72178FE51005ECFD7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */,
+				57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */,
+				57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */,
+				57CBB6D2217909C0005ECFD7 /* RestaurantDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		57CBB6C82178FE5B005ECFD7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57CBB6C92178FE5F005ECFD7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34253EFC21781DEA00C2317A /* ViewController.swift in Sources */,
+				57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */,
+				57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */,
+				57CBB6D3217909C0005ECFD7 /* RestaurantDetailViewController.swift in Sources */,
+				57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */,
 				34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
