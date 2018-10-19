@@ -13,6 +13,7 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var restaurantTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var hoursTextField: UITextField!
     @IBOutlet weak var restaurantImageView: UIImageView!
     
     var email: String!
@@ -68,6 +69,7 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
         createMenuViewController.restaurantName = restaurantTextField.text!
         createMenuViewController.addressName = addressTextField.text!
         createMenuViewController.phoneNumber = phoneNumberTextField.text!
+        createMenuViewController.restaurantHours = hoursTextField.text!
         createMenuViewController.restaurantImage = restaurantImageView.image!
     }
     

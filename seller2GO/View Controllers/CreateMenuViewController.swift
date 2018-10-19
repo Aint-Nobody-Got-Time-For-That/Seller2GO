@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,6 +16,7 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
     var restaurantName: String!
     var addressName: String!
     var phoneNumber: String!
+    var restaurantHours: String!
     var restaurantImage: UIImage!
 
     @IBOutlet weak var restaurantNameLabel: UILabel!
@@ -63,7 +65,29 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func tapCreate(_ sender: Any) {
-        print("create menu")
+        // create new user and then create new restaurant
+        let newUser = PFUser()
+        newUser.username = email
+        newUser.password = password
+
+        newUser.signUpInBackground { (success: Bool, error: Error?) in
+            if success {
+                
+                Restaurant.createRestaurant(image: self.restaurantImage, name: self.restaurantName, hours: self.restaurantHours, phoneNumber: self.phoneNumber, email: self.email) { (success: Bool, error: Error?) in
+                    
+                    if success {
+                        print("Successssssssssss")
+                        
+                    } else {
+                        print("Create Restaurant Error")
+                    }
+                }
+
+            } else {
+                print("New User Sign Up Error")
+            }
+        }
+        
     }
     
     override func viewDidLoad() {

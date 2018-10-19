@@ -101,7 +101,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX8-Hx-TCw">
-                                <rect key="frame" x="36" y="445" width="32" height="30"/>
+                                <rect key="frame" x="36" y="503" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
@@ -109,14 +109,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vd-mA-ht5">
-                                <rect key="frame" x="36" y="230" width="81" height="21"/>
+                                <rect key="frame" x="36" y="300" width="81" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-plus" translatesAutoresizingMaskIntoConstraints="NO" id="7uu-LG-GAz">
-                                <rect key="frame" x="36" y="259" width="266" height="166"/>
+                                <rect key="frame" x="36" y="329" width="266" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -124,12 +124,20 @@
                                     <outletCollection property="gestureRecognizers" destination="RBS-x9-oss" appends="YES" id="ApF-zN-S89"/>
                                 </connections>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOL-DE-MqS">
+                                <rect key="frame" x="36" y="218" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xi5-b2-cCc"/>
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="oDn-Eq-mgt" id="Um6-xl-4eB"/>
+                        <outlet property="hoursTextField" destination="rOL-DE-MqS" id="SnM-gV-zJY"/>
                         <outlet property="phoneNumberTextField" destination="JJy-Jo-s4G" id="pQW-Lc-QyB"/>
                         <outlet property="restaurantImageView" destination="7uu-LG-GAz" id="inM-Sk-pNH"/>
                         <outlet property="restaurantTextField" destination="FGV-LV-dCg" id="Qca-iL-A1W"/>

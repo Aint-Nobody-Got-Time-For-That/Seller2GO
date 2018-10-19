@@ -12,6 +12,9 @@
 		34253EFF21781DEA00C2317A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253EFD21781DEA00C2317A /* Main.storyboard */; };
 		34253F0121781DEF00C2317A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0021781DEF00C2317A /* Assets.xcassets */; };
 		34253F0421781DEF00C2317A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0221781DEF00C2317A /* LaunchScreen.storyboard */; };
+		57260A2B21795B0100826DC7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2A21795B0100826DC7 /* Keys.swift */; };
+		57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2C21795B1A00826DC7 /* KeysSample.swift */; };
+		57260A2F21795C2600826DC7 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2E21795C2600826DC7 /* Restaurant.swift */; };
 		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
 		57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */; };
 		57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */; };
@@ -27,6 +30,9 @@
 		34253F0321781DEF00C2317A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34253F0521781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C1B1A7C6071E949D39EB793 /* Pods-seller2GOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOUITests/Pods-seller2GOUITests.release.xcconfig"; sourceTree = "<group>"; };
+		57260A2A21795B0100826DC7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		57260A2C21795B1A00826DC7 /* KeysSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysSample.swift; sourceTree = "<group>"; };
+		57260A2E21795C2600826DC7 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantViewController.swift; sourceTree = "<group>"; };
 		57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMenuViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 				34253F0021781DEF00C2317A /* Assets.xcassets */,
 				34253F0221781DEF00C2317A /* LaunchScreen.storyboard */,
 				34253F0521781DEF00C2317A /* Info.plist */,
+				57260A2A21795B0100826DC7 /* Keys.swift */,
+				57260A2C21795B1A00826DC7 /* KeysSample.swift */,
 			);
 			path = seller2GO;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 		57CBB6C92178FE5F005ECFD7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57260A2E21795C2600826DC7 /* Restaurant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,9 +273,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */,
+				57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */,
 				57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */,
 				57CBB6D3217909C0005ECFD7 /* RestaurantDetailViewController.swift in Sources */,
+				57260A2F21795C2600826DC7 /* Restaurant.swift in Sources */,
 				57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */,
+				57260A2B21795B0100826DC7 /* Keys.swift in Sources */,
 				34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
