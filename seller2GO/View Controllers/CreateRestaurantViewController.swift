@@ -73,6 +73,10 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
         createMenuViewController.restaurantImage = restaurantImageView.image!
     }
     
+    @IBAction func tapBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

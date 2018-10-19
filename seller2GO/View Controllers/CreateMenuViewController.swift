@@ -64,6 +64,10 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
         return newImage
     }
     
+    @IBAction func tapBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func tapCreate(_ sender: Any) {
         // create new user and then create new restaurant
         let newUser = PFUser()
