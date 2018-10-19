@@ -10,9 +10,9 @@ import UIKit
 
 class CreateRestaurantViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var restaurantTextLabel: UITextField!
-    @IBOutlet weak var addressTextLabel: UITextField!
-    @IBOutlet weak var phoneNumberTextLabel: UITextField!
+    @IBOutlet weak var restaurantTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var restaurantImageView: UIImageView!
     
     var email: String!
@@ -22,7 +22,7 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
         self.performSegue(withIdentifier: "goToCreateMenuSegue", sender: nil)
     }
     
-    @IBAction func tapNewPhoto(_ sender: Any) {
+    @IBAction func tapNewRestaurantPhoto(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -65,9 +65,9 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
         let createMenuViewController = segue.destination as! CreateMenuViewController
         createMenuViewController.email = email
         createMenuViewController.password = password
-        createMenuViewController.restaurantName = restaurantTextLabel.text!
-        createMenuViewController.addressName = addressTextLabel.text!
-        createMenuViewController.phoneNumber = phoneNumberTextLabel.text!
+        createMenuViewController.restaurantName = restaurantTextField.text!
+        createMenuViewController.addressName = addressTextField.text!
+        createMenuViewController.phoneNumber = phoneNumberTextField.text!
         createMenuViewController.restaurantImage = restaurantImageView.image!
     }
     

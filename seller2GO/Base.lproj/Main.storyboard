@@ -129,17 +129,17 @@
                         <viewLayoutGuide key="safeArea" id="Xi5-b2-cCc"/>
                     </view>
                     <connections>
-                        <outlet property="addressTextLabel" destination="oDn-Eq-mgt" id="OAa-Xb-Neh"/>
-                        <outlet property="phoneNumberTextLabel" destination="JJy-Jo-s4G" id="mFo-hR-1sw"/>
+                        <outlet property="addressTextField" destination="oDn-Eq-mgt" id="Um6-xl-4eB"/>
+                        <outlet property="phoneNumberTextField" destination="JJy-Jo-s4G" id="pQW-Lc-QyB"/>
                         <outlet property="restaurantImageView" destination="7uu-LG-GAz" id="inM-Sk-pNH"/>
-                        <outlet property="restaurantTextLabel" destination="FGV-LV-dCg" id="nO2-tB-UKL"/>
+                        <outlet property="restaurantTextField" destination="FGV-LV-dCg" id="Qca-iL-A1W"/>
                         <segue destination="Z9a-B8-dx9" kind="presentation" identifier="goToCreateMenuSegue" id="7uO-Vx-fHK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npm-6N-AMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="RBS-x9-oss">
                     <connections>
-                        <action selector="tapNewPhoto:" destination="ITU-8u-huM" id="oIU-m3-EyJ"/>
+                        <action selector="tapNewRestaurantPhoto:" destination="ITU-8u-huM" id="A84-sA-sAo"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -153,8 +153,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYp-nP-0UG">
-                                <rect key="frame" x="169" y="46" width="37" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taco" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYp-nP-0UG">
+                                <rect key="frame" x="16" y="46" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -174,9 +174,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WxJ-a5-tX7">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-eat" translatesAutoresizingMaskIntoConstraints="NO" id="WxJ-a5-tX7">
                                 <rect key="frame" x="285" y="88" width="74" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="yge-om-PGt" appends="YES" id="6kw-aM-fIf"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ism-SW-bdM">
                                 <rect key="frame" x="16" y="251" width="343" height="169"/>
@@ -189,18 +194,31 @@
                                 <rect key="frame" x="16" y="473" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="tapCreate:" destination="Z9a-B8-dx9" eventType="touchUpInside" id="Bvj-7S-okf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IUl-2K-06m"/>
                     </view>
                     <connections>
+                        <outlet property="foodDescriptionTextField" destination="Ism-SW-bdM" id="c7d-xE-9WT"/>
+                        <outlet property="foodImageView" destination="WxJ-a5-tX7" id="Okj-xv-qLN"/>
+                        <outlet property="foodNameTextField" destination="wb9-Ta-uHa" id="VbN-p7-7J4"/>
+                        <outlet property="foodPriceTextField" destination="9WR-LL-sr5" id="e4x-Lg-5Y8"/>
+                        <outlet property="restaurantNameLabel" destination="PYp-nP-0UG" id="vJa-XE-43A"/>
                         <segue destination="x5L-bE-WRh" kind="presentation" identifier="goToRestaurantDetailSegue" id="2fx-2q-goP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpW-tm-MtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yge-om-PGt">
+                    <connections>
+                        <action selector="tapNewFoodPhoto:" destination="Z9a-B8-dx9" id="ruj-SC-LPS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1698" y="9"/>
+            <point key="canvasLocation" x="1696.8" y="8.5457271364317844"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="epl-BM-Rcf">
@@ -228,6 +246,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iconmonstr-eat" width="60" height="60"/>
         <image name="iconmonstr-plus" width="60" height="60"/>
     </resources>
 </document>
