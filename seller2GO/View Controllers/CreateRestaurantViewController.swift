@@ -10,14 +10,13 @@ import UIKit
 
 class CreateRestaurantViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var restaurantTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var hoursTextField: UITextField!
     @IBOutlet weak var restaurantImageView: UIImageView!
-    
-    var email: String!
-    var password: String!
     
     @IBAction func onTapNext(_ sender: Any) {
         self.performSegue(withIdentifier: "goToCreateMenuSegue", sender: nil)
@@ -64,8 +63,9 @@ class CreateRestaurantViewController: UIViewController, UIImagePickerControllerD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let createMenuViewController = segue.destination as! CreateMenuViewController
-        createMenuViewController.email = email
-        createMenuViewController.password = password
+        
+        createMenuViewController.email = emailTextField.text!
+        createMenuViewController.password = passwordTextField.text!
         createMenuViewController.restaurantName = restaurantTextField.text!
         createMenuViewController.addressName = addressTextField.text!
         createMenuViewController.phoneNumber = phoneNumberTextField.text!

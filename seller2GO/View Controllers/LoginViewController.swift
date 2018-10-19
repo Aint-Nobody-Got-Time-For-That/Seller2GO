@@ -21,12 +21,6 @@ class LoginViewController: UIViewController {
         self.performSegue(withIdentifier: "goToCreateRestaurantSegue", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let createRestaurantViewController = segue.destination as! CreateRestaurantViewController
-        createRestaurantViewController.email = emailTextField.text!
-        createRestaurantViewController.password = passwordTextField.text!
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
