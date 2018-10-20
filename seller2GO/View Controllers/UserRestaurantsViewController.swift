@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import Parse
 
 class UserRestaurantsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let restaurantQuery = PFQuery(className: "Restaurant")
+        restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
+        
+        restaurantQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if error == nil, let restaurants = objects {
+                print(restaurants)
+            } else {
+                print("Error in restaurant query: \(error!)")
+            }
+        }
     }
     
     @IBAction func tapLogout(_ sender: Any) {

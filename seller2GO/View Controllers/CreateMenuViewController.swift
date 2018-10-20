@@ -86,17 +86,47 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
         newMenuItem.price = Double(foodPriceTextField.text!)!
         newMenuItem.name = foodNameTextField.text!
         
-        newUserRestaurant.addUniqueObject(newMenuItem, forKey: "menu_item")
-        newUser.addUniqueObject(newUserRestaurant, forKey: "restaurant")
+//        newUserRestaurant.addUniqueObject(newMenuItem, forKey: "menu_item")
+//        newUser.addUniqueObject(newUserRestaurant, forKey: "restaurants")
         
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
-                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+                newMenuItem.addUniqueObject(newUserRestaurant, forKey: "restaurant")
+                newMenuItem.saveInBackground { (success: Bool, error: Error?) in
+                    if success {
+                        
+                        newUserRestaurant.addUniqueObject(newUser, forKey: "user")
+                        newUserRestaurant.saveInBackground(block: { (success: Bool, error: Error?) in
+                            
+                            if success {
+                                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+                            } else {
+                                print("new user restaurant save in background error")
+                                print(error!)
+                            }
+                            
+                        })
+                        
+                    } else {
+                        print("new menu item save in background error")
+                        print(error!)
+                    }
+                }
             } else {
                 print("New User Sign Up Error")
+                print(error!)
             }
         }
         
+        
+//        newUser.signUpInBackground { (success: Bool, error: Error?) in
+//            if success {
+//                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+//            } else {
+//                print("New User Sign Up Error")
+//                print(error!)
+//            }
+//        }
     }
     
     override func viewDidLoad() {
