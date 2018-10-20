@@ -18,7 +18,7 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
     var phoneNumber: String!
     var restaurantHours: String!
     var restaurantImage: UIImage!
-
+    
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var foodNameTextField: UITextField!
     @IBOutlet weak var foodImageView: UIImageView!
@@ -73,20 +73,25 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
         let newUser = PFUser()
         newUser.username = email
         newUser.password = password
-
+        
+        let newUserRestaurant = Restaurant()
+        newUserRestaurant.photo = Restaurant.getPFFileFromImage(restaurantImage)!
+        newUserRestaurant.name = restaurantName
+        newUserRestaurant.hours = restaurantHours
+        newUserRestaurant.phoneNumber = phoneNumber
+        
+        let newMenuItem = MenuItem()
+        newMenuItem.photo = MenuItem.getPFFileFromImage(foodImageView.image)!
+        newMenuItem.menuItemDescription = foodDescriptionTextField.text!
+        newMenuItem.price = Double(foodPriceTextField.text!)!
+        newMenuItem.name = foodNameTextField.text!
+        
+        newUserRestaurant.addUniqueObject(newMenuItem, forKey: "menu_item")
+        newUser.addUniqueObject(newUserRestaurant, forKey: "restaurant")
+        
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
-                
-                Restaurant.createRestaurant(image: self.restaurantImage, name: self.restaurantName, hours: self.restaurantHours, phoneNumber: self.phoneNumber, email: self.email) { (success: Bool, error: Error?) in
-                    
-                    if success {
-                        print("Successssssssssss")
-                        
-                    } else {
-                        print("Create Restaurant Error")
-                    }
-                }
-
+                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
             } else {
                 print("New User Sign Up Error")
             }
@@ -96,8 +101,8 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         restaurantNameLabel.text = "\(restaurantName!)'s First Item"
     }
-
+    
 }

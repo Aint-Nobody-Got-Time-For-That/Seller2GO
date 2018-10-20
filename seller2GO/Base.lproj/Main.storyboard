@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="1549.5999999999999" y="85.907046476761622"/>
         </scene>
-        <!--Restaurant Detail View Controller-->
+        <!--User Restaurants View Controller-->
         <scene sceneID="epl-BM-Rcf">
             <objects>
-                <viewController id="x5L-bE-WRh" customClass="RestaurantDetailViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userRestaurantsViewController" id="x5L-bE-WRh" customClass="UserRestaurantsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdB-hy-Ibq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NO3-Y4-s5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847" y="896"/>
+            <point key="canvasLocation" x="641" y="891"/>
         </scene>
     </scenes>
     <resources>

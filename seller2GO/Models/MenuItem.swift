@@ -1,22 +1,23 @@
 //
-//  Restaurant.swift
+//  MenuItem.swift
 //  seller2GO
 //
-//  Created by Victor Li on 10/18/18.
+//  Created by Victor Li on 10/19/18.
 //  Copyright © 2018 Aint Nobody Got Time For That. All rights reserved.
 //
 
 import Foundation
 import Parse
 
-class Restaurant: PFObject, PFSubclassing {
+class MenuItem: PFObject, PFSubclassing {
+    
     @NSManaged var photo: PFFile
+    @NSManaged var menuItemDescription: String
+    @NSManaged var price: Double
     @NSManaged var name: String
-    @NSManaged var hours: String
-    @NSManaged var phoneNumber: String
     
     static func parseClassName() -> String {
-        return "Restaurant"
+        return "MenuItem"
     }
     
     /**
