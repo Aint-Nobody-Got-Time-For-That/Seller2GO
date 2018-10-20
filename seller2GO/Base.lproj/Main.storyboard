@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,6 +65,7 @@
                         <outlet property="emailTextField" destination="Pxs-Kz-CAu" id="O1J-XB-3Wt"/>
                         <outlet property="passwordTextField" destination="rYu-fM-mEy" id="wFD-Fp-Rrl"/>
                         <segue destination="ITU-8u-huM" kind="presentation" identifier="goToCreateRestaurantSegue" id="86r-u9-zFl"/>
+                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="gotoUserRestaurantsSegue" modalTransitionStyle="flipHorizontal" id="y7z-68-qXf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -175,7 +176,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="730" y="86"/>
+            <point key="canvasLocation" x="770" y="86"/>
         </scene>
         <!--Create Menu View Controller-->
         <scene sceneID="xIk-Bh-4uo">
@@ -263,7 +264,7 @@
         <!--User Restaurants View Controller-->
         <scene sceneID="epl-BM-Rcf">
             <objects>
-                <viewController storyboardIdentifier="userRestaurantsViewController" id="x5L-bE-WRh" customClass="UserRestaurantsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserRestaurantsViewController" id="x5L-bE-WRh" customClass="UserRestaurantsViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdB-hy-Ibq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,6 +276,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o85-rx-eAA">
+                                <rect key="frame" x="15" y="26" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="tapLogout:" destination="x5L-bE-WRh" eventType="touchUpInside" id="RhY-cD-GQY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="31h-Fd-nQe"/>
@@ -289,4 +298,7 @@
         <image name="iconmonstr-eat" width="60" height="60"/>
         <image name="iconmonstr-plus" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y7z-68-qXf"/>
+    </inferredMetricsTieBreakers>
 </document>

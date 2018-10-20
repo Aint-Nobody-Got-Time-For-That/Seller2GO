@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
@@ -14,7 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func onTapLogin(_ sender: Any) {
-        print("tapping login button")
+        PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: Error?) in
+            if user != nil {
+                self.performSegue(withIdentifier: "gotoUserRestaurantsSegue", sender: nil)
+            }
+        }
     }
     
     @IBAction func onTapCreateAccount(_ sender: Any) {
