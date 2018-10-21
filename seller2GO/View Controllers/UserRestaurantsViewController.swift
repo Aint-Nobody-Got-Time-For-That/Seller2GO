@@ -9,17 +9,37 @@
 import UIKit
 import Parse
 
-class UserRestaurantsViewController: UIViewController {
-
+class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var restaurants: [Restaurant] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return restaurants.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let restaurantCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
+        restaurantCell.restaurant = restaurants[indexPath.row]
+        return restaurantCell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         let restaurantQuery = PFQuery(className: "Restaurant")
         restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
         
         restaurantQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if error == nil, let restaurants = objects {
-                print(restaurants)
+            if error == nil, let userRestaurants = objects {
+                self.restaurants = userRestaurants as! [Restaurant]
             } else {
                 print("Error in restaurant query: \(error!)")
             }

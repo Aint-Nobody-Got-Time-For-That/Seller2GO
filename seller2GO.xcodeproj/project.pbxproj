@@ -17,6 +17,7 @@
 		57260A2F21795C2600826DC7 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2E21795C2600826DC7 /* Restaurant.swift */; };
 		57310D80217AC98700F2B037 /* UserRestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57310D7F217AC98700F2B037 /* UserRestaurantsViewController.swift */; };
 		57310D82217ADCDE00F2B037 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57310D81217ADCDE00F2B037 /* MenuItem.swift */; };
+		5778232E217BBBBB00539928 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778232D217BBBBB00539928 /* RestaurantCell.swift */; };
 		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
 		57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */; };
 		57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */; };
@@ -36,6 +37,7 @@
 		57260A2E21795C2600826DC7 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		57310D7F217AC98700F2B037 /* UserRestaurantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRestaurantsViewController.swift; sourceTree = "<group>"; };
 		57310D81217ADCDE00F2B037 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		5778232D217BBBBB00539928 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantViewController.swift; sourceTree = "<group>"; };
 		57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMenuViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		57CBB6C82178FE5B005ECFD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5778232D217BBBBB00539928 /* RestaurantCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5778232E217BBBBB00539928 /* RestaurantCell.swift in Sources */,
 				57310D80217AC98700F2B037 /* UserRestaurantsViewController.swift in Sources */,
 				57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */,
 				57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */,
