@@ -313,6 +313,7 @@
                                             <outlet property="restaurantImageView" destination="GAb-xh-KuU" id="v6y-vl-oPX"/>
                                             <outlet property="restaurantNameLabel" destination="1gI-kO-qZa" id="3eN-Se-wrz"/>
                                             <outlet property="restaurantPhoneNumberLabel" destination="riR-HW-20u" id="y7O-Ia-TTe"/>
+                                            <segue destination="dXc-h0-Ouh" kind="show" id="PR1-aj-TB4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -336,6 +337,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NO3-Y4-s5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="640.79999999999995" y="890.10494752623697"/>
+        </scene>
+        <!--Restaurant Menu View Controller-->
+        <scene sceneID="mAw-4h-yVh">
+            <objects>
+                <viewController id="dXc-h0-Ouh" customClass="RestaurantMenuViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wYb-Ys-rLq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-Cs-tnr">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Jbk-gl-Rew"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1O2-LR-tow"/>
+                    </view>
+                    <connections>
+                        <outlet property="nav" destination="Jbk-gl-Rew" id="oZ2-VY-c2b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-v2-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="890"/>
         </scene>
     </scenes>
     <resources>

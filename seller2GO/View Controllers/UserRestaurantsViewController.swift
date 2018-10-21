@@ -34,6 +34,10 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     
+    @objc func tapEdit(_ sender: Any) {
+        print("Edit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,9 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         // set up nav bar
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
         nav.leftBarButtonItem = logoutBarButtonItem
+        
+        let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapEdit(_:)))
+        nav.rightBarButtonItem = editBarButtonItem
         
         let restaurantQuery = PFQuery(className: "Restaurant")
         restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
