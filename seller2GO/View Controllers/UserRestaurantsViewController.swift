@@ -12,6 +12,8 @@ import Parse
 class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nav: UINavigationItem!
+    
     var restaurants: [Restaurant] = [] {
         didSet {
             tableView.reloadData()
@@ -28,11 +30,19 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         return restaurantCell
     }
     
+    @objc func tapLogout(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        // set up nav bar
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
+        nav.leftBarButtonItem = logoutBarButtonItem
         
         let restaurantQuery = PFQuery(className: "Restaurant")
         restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
@@ -45,9 +55,4 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
             }
         }
     }
-    
-    @IBAction func tapLogout(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
-    }
-    
 }
