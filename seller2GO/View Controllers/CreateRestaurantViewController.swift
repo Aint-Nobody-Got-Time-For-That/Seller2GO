@@ -109,6 +109,7 @@ class CreateRestaurantViewController: FormViewController {
                 $0.title = "Photo"
                 $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
                 $0.value = UIImage(named: "iconmonstr-eat")
+                $0.clearAction = .no
             }
             <<< TextRow() {
                 $0.tag = "restaurantStreet"
@@ -249,13 +250,15 @@ class CreateRestaurantViewController: FormViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let createMenuViewController = segue.destination as! CreateMenuViewController
+        let navVC = segue.destination as! UINavigationController
+        
+        let createMenuViewController = navVC.viewControllers.first as! CreateMenuViewController
         
         let (email, password, restaurantName, address, phoneNumber, image) = getFormValues()
         createMenuViewController.email = email
         createMenuViewController.password = password
         createMenuViewController.restaurantName = restaurantName
-        createMenuViewController.addressName = address
+        createMenuViewController.address = address
         createMenuViewController.phoneNumber = phoneNumber
         createMenuViewController.restaurantImage = image
     }

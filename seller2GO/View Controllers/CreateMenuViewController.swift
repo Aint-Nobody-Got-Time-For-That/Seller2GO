@@ -8,68 +8,78 @@
 
 import UIKit
 import Parse
+import Eureka
+import ImageRow
 
-class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateMenuViewController: FormViewController {
+    
+    @IBOutlet weak var nav: UINavigationItem!
+    var createBarButtonItem: UIBarButtonItem!
     
     var email: String!
     var password: String!
     var restaurantName: String!
-    var addressName: String!
+    var address: String!
     var phoneNumber: String!
-    var restaurantHours: String!
     var restaurantImage: UIImage!
-    
-    @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var foodNameTextField: UITextField!
-    @IBOutlet weak var foodImageView: UIImageView!
-    @IBOutlet weak var foodPriceTextField: UITextField!
-    @IBOutlet weak var foodDescriptionTextField: UITextField!
-    
-    @IBAction func tapNewFoodPhoto(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            print("Camera is available 📸")
-            vc.sourceType = .camera
-        } else {
-            print("Camera 🚫 available so we will use photo library instead")
-            vc.sourceType = .photoLibrary
+
+    private func initializeForm() {
+        form
+            +++ Section("Dish")
+            <<< NameRow() {
+                $0.tag = "name"
+                $0.title = "Name"
+                $0.placeholder = "Fish Taco"
+                $0.add(rule: RuleRequired())
+                $0.add(rule: RuleGreaterOrEqualThan(min: "1"))
+                $0.validationOptions = .validatesOnChangeAfterBlurred
+                }
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+            }
+            <<< ImageRow() {
+                $0.tag = "photo"
+                $0.title = "Photo"
+                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                $0.value = UIImage(named: "iconmonstr-eat")
+                $0.clearAction = .no
+            }
+            <<< DecimalRow() {
+                $0.tag = "price"
+                $0.useFormatterDuringInput = true
+                $0.title = "Price"
+                $0.placeholder = "0"
+                let formatter = CurrencyFormatter()
+                formatter.locale = .current
+                formatter.numberStyle = .currency
+                $0.formatter = formatter
+            }
+            <<< TextAreaRow() {
+                $0.tag = "description"
+                $0.placeholder = "Description"
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
         }
-        
-        self.present(vc, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    private func getFormValues() -> (name: String, photo: UIImage, price: String, description: String) {
+        let valuesDictionary = form.values()
         
-        let resizedImage = resize(image: originalImage, newSize: CGSize(width: 300, height: 300))
-        self.dismiss(animated: true, completion: nil)
-        
-        foodImageView.contentMode = .scaleToFill
-        foodImageView.image = resizedImage
+        let name = (valuesDictionary["name"] as! String)
+        let photo = (valuesDictionary["photo"] as! UIImage)
+        let price = (valuesDictionary["price"] as! Double)
+        let description = (valuesDictionary["description"] as! String)
+        return (name: name, photo: photo, price: String(price), description: description)
     }
     
-    // resizing image before uploading to Parse
-    private func resize(image: UIImage, newSize: CGSize) -> UIImage {
-        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
-        resizeImageView.image = image
-        
-        UIGraphicsBeginImageContext(resizeImageView.frame.size)
-        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-    @IBAction func tapBack(_ sender: Any) {
+    @objc func tapBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func tapCreate(_ sender: Any) {
-        // create new user and then create new restaurant
+    @objc func tapCreate(_ sender: Any) {
+        let (name, photo, price, description) = getFormValues()
+        
         let newUser = PFUser()
         newUser.username = email
         newUser.password = password
@@ -77,17 +87,14 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
         let newUserRestaurant = Restaurant()
         newUserRestaurant.photo = Restaurant.getPFFileFromImage(restaurantImage)!
         newUserRestaurant.name = restaurantName
-        newUserRestaurant.hours = restaurantHours
+        newUserRestaurant.address = address
         newUserRestaurant.phoneNumber = phoneNumber
         
         let newMenuItem = MenuItem()
-        newMenuItem.photo = MenuItem.getPFFileFromImage(foodImageView.image)!
-        newMenuItem.menuItemDescription = foodDescriptionTextField.text!
-        newMenuItem.price = Double(foodPriceTextField.text!)!
-        newMenuItem.name = foodNameTextField.text!
-        
-//        newUserRestaurant.addUniqueObject(newMenuItem, forKey: "menu_item")
-//        newUser.addUniqueObject(newUserRestaurant, forKey: "restaurants")
+        newMenuItem.photo = MenuItem.getPFFileFromImage(photo)!
+        newMenuItem.name = name
+        newMenuItem.price = price
+        newMenuItem.menuItemDescription = description
         
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
@@ -100,6 +107,7 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
                             
                             if success {
                                 self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+//                                print("successful created")
                             } else {
                                 print("new user restaurant save in background error")
                                 print(error!)
@@ -117,21 +125,49 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
                 print(error!)
             }
         }
-        
-        
-//        newUser.signUpInBackground { (success: Bool, error: Error?) in
-//            if success {
-//                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
-//            } else {
-//                print("New User Sign Up Error")
-//                print(error!)
-//            }
-//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // set up nav bar
+        let backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(CreateMenuViewController.tapBack(_:)))
+        nav.leftBarButtonItem = backBarButtonItem
         
+        createBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(CreateMenuViewController.tapCreate(_:)))
+        // createBarButtonItem.isEnabled = false
+        nav.rightBarButtonItem = createBarButtonItem
+        
+        nav.title = restaurantName
+        
+        // Enables the navigation accessory and stops navigation when a disabled row is encountered
+        navigationOptions = RowNavigationOptions.Enabled.union(.StopDisabledRow)
+        // Enables smooth scrolling on navigation to off-screen rows
+        animateScroll = true
+        // Leaves 20pt of space between the keyboard and the highlighted row after scrolling to an off screen row
+        rowKeyboardSpacing = 20
+        
+        initializeForm()
+        
+    }
+    
+    class CurrencyFormatter : NumberFormatter, FormatterProtocol {
+        override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, range rangep: UnsafeMutablePointer<NSRange>?) throws {
+            guard obj != nil else { return }
+            var str = string.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if !string.isEmpty, numberStyle == .currency && !string.contains(currencySymbol) {
+                // Check if the currency symbol is at the last index
+                if let formattedNumber = self.string(from: 1), String(formattedNumber[formattedNumber.index(before: formattedNumber.endIndex)...]) == currencySymbol {
+                    // This means the user has deleted the currency symbol. We cut the last number and then add the symbol automatically
+                    str = String(str[..<str.index(before: str.endIndex)])
+                    
+                }
+            }
+            obj?.pointee = NSNumber(value: (Double(str) ?? 0.0)/Double(pow(10.0, Double(minimumFractionDigits))))
+        }
+        
+        func getNewPosition(forPosition position: UITextPosition, inTextInput textInput: UITextInput, oldValue: String?, newValue: String?) -> UITextPosition {
+            return textInput.position(from: position, offset:((newValue?.count ?? 0) - (oldValue?.count ?? 0))) ?? position
+        }
     }
     
 }

@@ -12,8 +12,8 @@ import Parse
 class Restaurant: PFObject, PFSubclassing {
     @NSManaged var photo: PFFile
     @NSManaged var name: String
-    @NSManaged var hours: String
     @NSManaged var phoneNumber: String
+    @NSManaged var address: String
     
     static func parseClassName() -> String {
         return "Restaurant"
@@ -30,10 +30,23 @@ class Restaurant: PFObject, PFSubclassing {
         // check if image is not nil
         if let image = image {
             // get image data and check if that is not nil
-            if let imageData = UIImagePNGRepresentation(image) {
+            let resizedImage = resize(image: image, newSize: CGSize(width: 300, height: 300))
+            if let imageData = UIImagePNGRepresentation(resizedImage) {
                 return PFFile(name: "image.png", data: imageData)
             }
         }
         return nil
+    }
+    
+    class func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }

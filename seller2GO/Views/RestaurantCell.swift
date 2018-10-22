@@ -22,7 +22,6 @@ class RestaurantCell: UITableViewCell {
             restaurantImageView.loadInBackground()
             
             restaurantNameLabel.text = restaurant.name
-            restaurantHoursLabel.text = "Hours: \(restaurant.hours)"
             restaurantPhoneNumberLabel.text = "Phone Number: \(restaurant.phoneNumber)"
         }
     }
