@@ -4,6 +4,8 @@ PODS:
     - Alamofire (~> 4.5)
   - Bolts/Tasks (1.9.0)
   - Eureka (4.2.0)
+  - ImageRow (3.1.0):
+    - Eureka (~> 4.0)
   - Parse (1.17.1):
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
@@ -15,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
   - Eureka
+  - ImageRow (~> 3.1)
   - Parse
   - Parse/UI
   - PKHUD (~> 5.0)
@@ -25,6 +28,7 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - Eureka
+    - ImageRow
     - Parse
     - PKHUD
 
@@ -33,9 +37,10 @@ SPEC CHECKSUMS:
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
+  ImageRow: 1ea483078bfa3d880a7fc76fdfcddfd5f29a9e6b
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
 
-PODFILE CHECKSUM: 74880df7ed7a626e8229d4f7adf8a0a00ea18353
+PODFILE CHECKSUM: a88bc74599ee91d390de9c02a59a017a439a5b80
 
 COCOAPODS: 1.5.3

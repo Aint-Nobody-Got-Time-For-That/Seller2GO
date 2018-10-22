@@ -7,79 +7,129 @@
 //
 
 import UIKit
+import Eureka
+import ImageRow
 
-class CreateRestaurantViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var restaurantTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var hoursTextField: UITextField!
-    @IBOutlet weak var restaurantImageView: UIImageView!
+class CreateRestaurantViewController: FormViewController {
     
-    @IBAction func onTapNext(_ sender: Any) {
-        self.performSegue(withIdentifier: "goToCreateMenuSegue", sender: nil)
-    }
+    @IBOutlet weak var nav: UINavigationItem!
     
-    @IBAction func tapNewRestaurantPhoto(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            print("Camera is available 📸")
-            vc.sourceType = .camera
-        } else {
-            print("Camera 🚫 available so we will use photo library instead")
-            vc.sourceType = .photoLibrary
+    private func initializeForm() {
+        form
+            +++ Section("Login Info")
+            <<< EmailRow() {
+                $0.tag = "userEmail"
+                $0.title = "Email"
+                $0.placeholder = "JohnSmith@gmail.com"
+                $0.add(rule: RuleRequired())
+                $0.add(rule: RuleEmail())
+                $0.validationOptions = .validatesOnChangeAfterBlurred
+                }
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+            }
+            <<< PasswordRow() {
+                $0.tag = "userPassword"
+                $0.title = "Password"
+                $0.placeholder = "·····"
+                $0.add(rule: RuleRequired())
+                $0.add(rule: RuleGreaterOrEqualThan(min: "3"))
+                $0.validationOptions = .validatesOnChangeAfterBlurred
+                }
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+            }
+            
+            +++ Section("Restaurant Info")
+            <<< NameRow() {
+                $0.tag = "restaurantName"
+                $0.title = "Name"
+                $0.placeholder = "Starbucks"
+                $0.add(rule: RuleRequired())
+                $0.add(rule: RuleGreaterOrEqualThan(min: "1"))
+                $0.validationOptions = .validatesOnChangeAfterBlurred
+                }
+                .cellUpdate { cell, row in
+                    if !row.isValid {
+                        cell.titleLabel?.textColor = .red
+                    }
+            }
+            <<< ImageRow() {
+                $0.tag = "restaurantImage"
+                $0.title = "Photo"
+                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                $0.value = UIImage(named: "iconmonstr-eat")
+            }
+            <<< TextRow() {
+                $0.tag = "restaurantStreet"
+                $0.title = "Street"
+                $0.placeholder = "123 Jane Street"
+            }
+            <<< TextRow() {
+                $0.tag = "restaurantCity"
+                $0.title = "City"
+                $0.placeholder = "San Francisco"
+            }
+            <<< PhoneRow() {
+                $0.tag = "restaurantPhoneNumber"
+                $0.title = "Phone Number"
+                $0.placeholder = "+1 23456789"
+            }
+            <<< AlertRow<String>() {
+                $0.tag = "restaurantState"
+                $0.title = "State"
+                $0.selectorTitle = "Select State"
+                $0.options = States
+                $0.value = "CA"
+                }
+                .onPresent{ _, to in
+                    to.view.tintColor = .purple
+            }
+            
+            <<< ZipCodeRow() {
+                $0.tag = "resturantZipCode"
+                $0.title = "Zip Code"
+                $0.placeholder = "90210"
         }
         
-        self.present(vc, animated: true, completion: nil)
+        
+        let valuesDictionary = form.values()
+        print(valuesDictionary)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        let resizedImage = resize(image: originalImage, newSize: CGSize(width: 300, height: 300))
+    @objc func tapCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        
-        restaurantImageView.contentMode = .scaleToFill
-        restaurantImageView.image = resizedImage
     }
     
-    // resizing image before uploading to Parse
-    private func resize(image: UIImage, newSize: CGSize) -> UIImage {
-        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
-        resizeImageView.image = image
-        
-        UIGraphicsBeginImageContext(resizeImageView.frame.size)
-        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let createMenuViewController = segue.destination as! CreateMenuViewController
-        
-        createMenuViewController.email = emailTextField.text!
-        createMenuViewController.password = passwordTextField.text!
-        createMenuViewController.restaurantName = restaurantTextField.text!
-        createMenuViewController.addressName = addressTextField.text!
-        createMenuViewController.phoneNumber = phoneNumberTextField.text!
-        createMenuViewController.restaurantHours = hoursTextField.text!
-        createMenuViewController.restaurantImage = restaurantImageView.image!
-    }
-    
-    @IBAction func tapBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @objc func tapNext(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToCreateMenuSegue", sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set up nav bar
+        let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(CreateRestaurantViewController.tapCancel(_:)))
+        nav.leftBarButtonItem = cancelBarButtonItem
+        
+        let nextBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(CreateRestaurantViewController.tapNext(_:)))
+        nav.rightBarButtonItem = nextBarButtonItem
+        nav.title = "New Account"
+        
+        // Enables the navigation accessory and stops navigation when a disabled row is encountered
+        navigationOptions = RowNavigationOptions.Enabled.union(.StopDisabledRow)
+        // Enables smooth scrolling on navigation to off-screen rows
+        animateScroll = true
+        // Leaves 20pt of space between the keyboard and the highlighted row after scrolling to an off screen row
+        rowKeyboardSpacing = 20
+        
+        initializeForm()
     }
-
+    
 }
+
+

@@ -6,10 +6,11 @@ target 'seller2GO' do
   use_frameworks!
 
   # Pods for seller2GO
-	pod 'Eureka'
+  pod 'Eureka'
 	pod 'Parse/UI'
 	pod 'Parse'
 	pod 'PKHUD', '~> 5.0'
 	pod 'AlamofireImage', '~> 3.3'
+  pod 'ImageRow', '~> 3.1'
 
 end

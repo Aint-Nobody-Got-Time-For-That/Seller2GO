@@ -132,7 +132,6 @@ class CreateMenuViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        restaurantNameLabel.text = "\(restaurantName!)'s First Item"
     }
     
 }

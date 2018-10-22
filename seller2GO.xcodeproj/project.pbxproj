@@ -20,6 +20,7 @@
 		5778232E217BBBBB00539928 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778232D217BBBBB00539928 /* RestaurantCell.swift */; };
 		57A8337F217C248000C57471 /* RestaurantMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A8337E217C248000C57471 /* RestaurantMenuViewController.swift */; };
 		57A83381217C328300C57471 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A83380217C328300C57471 /* MenuItemCell.swift */; };
+		57AD5552217D776D001D1E8D /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AD5551217D776D001D1E8D /* States.swift */; };
 		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
 		57CBB6CD2179025E005ECFD7 /* CreateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */; };
 		57CBB6D121790928005ECFD7 /* CreateMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */; };
@@ -42,6 +43,7 @@
 		5778232D217BBBBB00539928 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		57A8337E217C248000C57471 /* RestaurantMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMenuViewController.swift; sourceTree = "<group>"; };
 		57A83380217C328300C57471 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
+		57AD5551217D776D001D1E8D /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57CBB6CC2179025E005ECFD7 /* CreateRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantViewController.swift; sourceTree = "<group>"; };
 		57CBB6D021790928005ECFD7 /* CreateMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMenuViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				34253F0521781DEF00C2317A /* Info.plist */,
 				57260A2A21795B0100826DC7 /* Keys.swift */,
 				57260A2C21795B1A00826DC7 /* KeysSample.swift */,
+				57AD5551217D776D001D1E8D /* States.swift */,
 			);
 			path = seller2GO;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageRow/ImageRow.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
@@ -269,6 +273,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
@@ -295,6 +300,7 @@
 				57260A2B21795B0100826DC7 /* Keys.swift in Sources */,
 				57A83381217C328300C57471 /* MenuItemCell.swift in Sources */,
 				57A8337F217C248000C57471 /* RestaurantMenuViewController.swift in Sources */,
+				57AD5552217D776D001D1E8D /* States.swift in Sources */,
 				34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
