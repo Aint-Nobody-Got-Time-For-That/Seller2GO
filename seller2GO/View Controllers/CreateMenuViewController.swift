@@ -22,7 +22,12 @@ class CreateMenuViewController: FormViewController {
     var address: String!
     var phoneNumber: String!
     var restaurantImage: UIImage!
-
+    
+    // all form validation
+    var nameField = false
+    var priceField = false
+    var descriptionField = false
+    
     private func initializeForm() {
         form
             +++ Section("Dish")
@@ -38,7 +43,19 @@ class CreateMenuViewController: FormViewController {
                     if !row.isValid {
                         cell.titleLabel?.textColor = .red
                     }
-            }
+                }.onChange({ (row) in
+                    if let value = row.value, value.count >= 1 {
+                        self.nameField = true
+                    } else {
+                        self.nameField = false
+                    }
+                    
+                    if self.isFormValidated() {
+                        self.createBarButtonItem.isEnabled = true
+                    } else {
+                        self.createBarButtonItem.isEnabled = false
+                    }
+                })
             <<< ImageRow() {
                 $0.tag = "photo"
                 $0.title = "Photo"
@@ -55,12 +72,39 @@ class CreateMenuViewController: FormViewController {
                 formatter.locale = .current
                 formatter.numberStyle = .currency
                 $0.formatter = formatter
-            }
+                }.onChange({ (row) in
+                    if row.value != nil {
+                        self.priceField = true
+                    } else {
+                        self.priceField = false
+                    }
+                    
+                    if self.isFormValidated() {
+                        self.createBarButtonItem.isEnabled = true
+                    } else {
+                        self.createBarButtonItem.isEnabled = false
+                    }
+                })
             <<< TextAreaRow() {
                 $0.tag = "description"
                 $0.placeholder = "Description"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
-        }
+                $0.add(rule: RuleRequired())
+                $0.add(rule: RuleGreaterOrEqualThan(min: "1"))
+                $0.validationOptions = .validatesOnChangeAfterBlurred
+                }.onChange({ (row) in
+                    if let value = row.value, value.count >= 1 {
+                        self.descriptionField = true
+                    } else {
+                        self.descriptionField = false
+                    }
+                    
+                    if self.isFormValidated() {
+                        self.createBarButtonItem.isEnabled = true
+                    } else {
+                        self.createBarButtonItem.isEnabled = false
+                    }
+                })
     }
     
     private func getFormValues() -> (name: String, photo: UIImage, price: String, description: String) {
@@ -107,7 +151,6 @@ class CreateMenuViewController: FormViewController {
                             
                             if success {
                                 self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
-//                                print("successful created")
                             } else {
                                 print("new user restaurant save in background error")
                                 print(error!)
@@ -127,6 +170,21 @@ class CreateMenuViewController: FormViewController {
         }
     }
     
+    // for enabling the Create Bar button
+    // return true to skip form validation
+    private func isFormValidated() -> Bool {
+        let valuesDictionary = form.values()
+        
+//        print(valuesDictionary["name"]!)
+//        print(valuesDictionary["photo"]!)
+//        print(valuesDictionary["price"]!)
+//        print(valuesDictionary["description"]!)
+//        print(nameField)
+//        print(descriptionField)
+        
+        return valuesDictionary["name"]! != nil && valuesDictionary["photo"]! != nil && valuesDictionary["price"]! != nil && valuesDictionary["description"]! != nil && nameField && descriptionField
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up nav bar
@@ -134,7 +192,7 @@ class CreateMenuViewController: FormViewController {
         nav.leftBarButtonItem = backBarButtonItem
         
         createBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(CreateMenuViewController.tapCreate(_:)))
-        // createBarButtonItem.isEnabled = false
+        createBarButtonItem.isEnabled = false
         nav.rightBarButtonItem = createBarButtonItem
         
         nav.title = restaurantName

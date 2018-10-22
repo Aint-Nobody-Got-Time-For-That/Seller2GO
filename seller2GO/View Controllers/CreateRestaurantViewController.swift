@@ -15,7 +15,7 @@ class CreateRestaurantViewController: FormViewController {
     @IBOutlet weak var nav: UINavigationItem!
     var nextBarButtonItem: UIBarButtonItem!
     
-    // all form validated
+    // all form validation
     var emailField = false
     var passwordField = false
     var restaurantNameField = false
