@@ -35,6 +35,7 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let menuItemCell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell") as! MenuItemCell
+        menuItemCell.selectionStyle = .none
         menuItemCell.menuItem = menuItems[indexPath.row]
         return menuItemCell
     }

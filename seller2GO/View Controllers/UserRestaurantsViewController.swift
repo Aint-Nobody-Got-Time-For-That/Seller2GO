@@ -26,6 +26,7 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let restaurantCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
+        restaurantCell.selectionStyle = .none
         restaurantCell.restaurant = restaurants[indexPath.row]
         return restaurantCell
     }
@@ -35,15 +36,19 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @objc func tapAdd(_ sender: Any) {
-        print("Adding")
+        performSegue(withIdentifier: "addRestaurantSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell) {
-            let restaurant = restaurants[indexPath.row]
-            let restaurantMenuViewController = segue.destination as! RestaurantMenuViewController
-            restaurantMenuViewController.restaurant = restaurant
+        if segue.identifier == "addRestaurantSegue" {
+            print("sdf")
+        } else {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let restaurant = restaurants[indexPath.row]
+                let restaurantMenuViewController = segue.destination as! RestaurantMenuViewController
+                restaurantMenuViewController.restaurant = restaurant
+            }
         }
     }
     

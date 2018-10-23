@@ -187,17 +187,48 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.97604709201388884" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="31h-Fd-nQe"/>
                     </view>
                     <connections>
                         <outlet property="nav" destination="gUb-F3-tIw" id="fVb-H9-z5K"/>
                         <outlet property="tableView" destination="yjn-xu-6yY" id="QW0-hb-1Go"/>
+                        <segue destination="cXI-on-fu8" kind="presentation" identifier="addRestaurantSegue" modalTransitionStyle="crossDissolve" id="iVb-uB-Vgu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NO3-Y4-s5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="640.79999999999995" y="890.10494752623697"/>
+        </scene>
+        <!--Add Restaurant View Controller-->
+        <scene sceneID="zxa-fZ-a8o">
+            <objects>
+                <viewController id="cXI-on-fu8" customClass="AddRestaurantViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ex0-vy-e5I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VDa-JU-dOV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2cO-Ug-3wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-214" y="1585"/>
+        </scene>
+        <!--Add To Menu View Controller-->
+        <scene sceneID="5fW-JZ-oZg">
+            <objects>
+                <viewController id="Le7-rc-Bj1" customClass="AddToMenuViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8EQ-Jh-0fz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tfW-qW-3Ac"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9o-D6-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1959" y="1638"/>
         </scene>
         <!--Restaurant Menu View Controller-->
         <scene sceneID="mAw-4h-yVh">
@@ -263,12 +294,13 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.97607421875" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1O2-LR-tow"/>
                     </view>
                     <connections>
                         <outlet property="nav" destination="Jbk-gl-Rew" id="oZ2-VY-c2b"/>
                         <outlet property="tableView" destination="QHC-dk-9JP" id="3KY-SQ-sa7"/>
+                        <segue destination="Le7-rc-Bj1" kind="presentation" identifier="addToMenuSegue" modalTransitionStyle="crossDissolve" id="O3n-dv-oEE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-v2-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
