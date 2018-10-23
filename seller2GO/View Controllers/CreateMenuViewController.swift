@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Eureka
 import ImageRow
+import PKHUD
 
 class CreateMenuViewController: FormViewController {
     
@@ -140,6 +141,10 @@ class CreateMenuViewController: FormViewController {
         newMenuItem.price = price
         newMenuItem.menuItemDescription = description
         
+        // show PKHUD
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if success {
                 newMenuItem.addUniqueObject(newUserRestaurant, forKey: "restaurant")
@@ -150,37 +155,45 @@ class CreateMenuViewController: FormViewController {
                         newUserRestaurant.saveInBackground(block: { (success: Bool, error: Error?) in
                             
                             if success {
-                                self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+                                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                                                                        self.performSegue(withIdentifier: "goToRestaurantDetailSegue", sender: nil)
+                                })
+                                
                             } else {
-                                print("new user restaurant save in background error")
-                                print(error!)
+                                print("new user restaurant save in background error: \(error!)")
+                                self.displayError(error!)
                             }
                             
                         })
                         
                     } else {
-                        print("new menu item save in background error")
-                        print(error!)
+                        print("new menu item save in background error: \(error!)")
+                        self.displayError(error!)
                     }
                 }
             } else {
-                print("New User Sign Up Error")
-                print(error!)
+                
+                print("New User Sign Up Error: \(error!)")
+                self.displayError(error!)
             }
         }
+    }
+    
+    private func displayError(_ error: Error) {
+        PKHUD.sharedHUD.hide(animated: true)
+        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
     }
     
     // for enabling the Create Bar button
     // return true to skip form validation
     private func isFormValidated() -> Bool {
         let valuesDictionary = form.values()
-        
-//        print(valuesDictionary["name"]!)
-//        print(valuesDictionary["photo"]!)
-//        print(valuesDictionary["price"]!)
-//        print(valuesDictionary["description"]!)
-//        print(nameField)
-//        print(descriptionField)
         
         return valuesDictionary["name"]! != nil && valuesDictionary["photo"]! != nil && valuesDictionary["price"]! != nil && valuesDictionary["description"]! != nil && nameField && descriptionField
     }

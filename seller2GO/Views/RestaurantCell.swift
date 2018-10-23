@@ -13,7 +13,7 @@ class RestaurantCell: UITableViewCell {
 
     @IBOutlet weak var restaurantImageView: PFImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var restaurantHoursLabel: UILabel!
+    @IBOutlet weak var restaurantAddress: UILabel!
     @IBOutlet weak var restaurantPhoneNumberLabel: UILabel!
     
     var restaurant: Restaurant! {
@@ -21,6 +21,7 @@ class RestaurantCell: UITableViewCell {
             restaurantImageView.file = restaurant.photo
             restaurantImageView.loadInBackground()
             
+            restaurantAddress.text = restaurant.address
             restaurantNameLabel.text = restaurant.name
             restaurantPhoneNumberLabel.text = "Phone Number: \(restaurant.phoneNumber)"
         }

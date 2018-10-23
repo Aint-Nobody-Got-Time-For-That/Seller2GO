@@ -65,7 +65,7 @@
                         <outlet property="emailTextField" destination="Pxs-Kz-CAu" id="O1J-XB-3Wt"/>
                         <outlet property="passwordTextField" destination="rYu-fM-mEy" id="wFD-Fp-Rrl"/>
                         <segue destination="i7e-wp-4em" kind="presentation" identifier="goToCreateRestaurantSegue" id="86r-u9-zFl"/>
-                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="gotoUserRestaurantsSegue" modalTransitionStyle="flipHorizontal" id="y7z-68-qXf"/>
+                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="gotoUserRestaurantsSegue" modalTransitionStyle="crossDissolve" id="y7z-68-qXf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" id="K4d-2G-HRo"/>
                     <connections>
                         <outlet property="nav" destination="K4d-2G-HRo" id="BmL-0n-0Xa"/>
-                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="goToRestaurantDetailSegue" id="2fx-2q-goP"/>
+                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="goToRestaurantDetailSegue" modalTransitionStyle="crossDissolve" id="2fx-2q-goP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpW-tm-MtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,7 +120,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3040.8000000000002" y="85.907046476761622"/>
+            <point key="canvasLocation" x="2678" y="86"/>
         </scene>
         <!--User Restaurants View Controller-->
         <scene sceneID="epl-BM-Rcf">
@@ -153,7 +153,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-yf-trd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFH-yf-trd">
                                                     <rect key="frame" x="98" y="38" width="262" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -170,7 +170,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="restaurantHoursLabel" destination="cFH-yf-trd" id="zR3-3Z-gtD"/>
+                                            <outlet property="restaurantAddress" destination="cFH-yf-trd" id="ilB-Kd-bTr"/>
                                             <outlet property="restaurantImageView" destination="GAb-xh-KuU" id="v6y-vl-oPX"/>
                                             <outlet property="restaurantNameLabel" destination="1gI-kO-qZa" id="3eN-Se-wrz"/>
                                             <outlet property="restaurantPhoneNumberLabel" destination="riR-HW-20u" id="y7O-Ia-TTe"/>
@@ -309,7 +309,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-sI-fbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101.5999999999999" y="85.907046476761622"/>
+            <point key="canvasLocation" x="1874" y="86"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
