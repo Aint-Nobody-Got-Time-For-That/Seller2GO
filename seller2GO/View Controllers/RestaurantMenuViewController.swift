@@ -26,7 +26,7 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @objc func tapAdd(_ sender: Any) {
-        print("Edit Menu Item")
+        performSegue(withIdentifier: "addToMenuSegue", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,6 +38,29 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         menuItemCell.selectionStyle = .none
         menuItemCell.menuItem = menuItems[indexPath.row]
         return menuItemCell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navVC = segue.destination as! UINavigationController
+        
+        let addToMenuViewController = navVC.viewControllers.first as! AddToMenuViewController
+        addToMenuViewController.restaurant = restaurant
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // get menu items
+        let menuItemQuery = PFQuery(className: "MenuItem")
+        menuItemQuery.whereKey("restaurant", equalTo: restaurant)
+        
+        menuItemQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if error == nil, let items = objects {
+                self.menuItems = items as! [MenuItem]
+            } else {
+                print("Error in restaurant query: \(error!)")
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -54,17 +77,5 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
 
         // title of nav
         nav.title = "\(restaurant.name)'s Menu"
-        
-        // get menu items
-        let menuItemQuery = PFQuery(className: "MenuItem")
-        menuItemQuery.whereKey("restaurant", equalTo: restaurant)
-        
-        menuItemQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if error == nil, let items = objects {
-                self.menuItems = items as! [MenuItem]
-            } else {
-                print("Error in restaurant query: \(error!)")
-            }
-        }
     }
 }

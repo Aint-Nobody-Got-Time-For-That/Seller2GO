@@ -204,10 +204,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tfW-qW-3Ac"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1Nq-Gp-59d"/>
+                    <connections>
+                        <outlet property="nav" destination="1Nq-Gp-59d" id="Rm7-F1-3Yf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9o-D6-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="1660.1199400299852"/>
+            <point key="canvasLocation" x="2410" y="1631"/>
         </scene>
         <!--Restaurant Menu View Controller-->
         <scene sceneID="mAw-4h-yVh">
@@ -279,7 +283,7 @@
                     <connections>
                         <outlet property="nav" destination="Jbk-gl-Rew" id="oZ2-VY-c2b"/>
                         <outlet property="tableView" destination="QHC-dk-9JP" id="3KY-SQ-sa7"/>
-                        <segue destination="Le7-rc-Bj1" kind="presentation" identifier="addToMenuSegue" modalTransitionStyle="crossDissolve" id="O3n-dv-oEE"/>
+                        <segue destination="Haq-ag-mtx" kind="presentation" identifier="addToMenuSegue" modalTransitionStyle="crossDissolve" id="O3n-dv-oEE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-v2-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,6 +325,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbM-NA-J1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-591.20000000000005" y="1601.649175412294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yCW-s9-gX5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Haq-ag-mtx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V6S-GJ-fHt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Le7-rc-Bj1" kind="relationship" relationship="rootViewController" id="pRL-R7-mr0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fa1-Va-p2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="1631"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

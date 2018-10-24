@@ -17,6 +17,7 @@ class AddRestaurantViewController: FormViewController {
     @IBOutlet weak var nav: UINavigationItem!
     var createBarButtonItem: UIBarButtonItem!
     
+    // for form validation
     var restaurantNameField = false
     var restaurantPhoneNumberField = false
     var restaurantStreetField = false
