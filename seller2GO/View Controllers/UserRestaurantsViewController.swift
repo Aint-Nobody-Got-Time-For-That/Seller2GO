@@ -40,14 +40,29 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addRestaurantSegue" {
-            print("sdf")
-        } else {
+        if segue.identifier != "addRestaurantSegue" {
+            
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
                 let restaurant = restaurants[indexPath.row]
                 let restaurantMenuViewController = segue.destination as! RestaurantMenuViewController
                 restaurantMenuViewController.restaurant = restaurant
+                
+            }
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let restaurantQuery = PFQuery(className: "Restaurant")
+        restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
+        
+        restaurantQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if error == nil, let userRestaurants = objects {
+                self.restaurants = userRestaurants as! [Restaurant]
+            } else {
+                print("Error in restaurant query: \(error!)")
             }
         }
     }
@@ -64,16 +79,5 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         
         let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapAdd(_:)))
         nav.rightBarButtonItem = addBarButtonItem
-        
-        let restaurantQuery = PFQuery(className: "Restaurant")
-        restaurantQuery.whereKey("user", equalTo: PFUser.current()!)
-        
-        restaurantQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if error == nil, let userRestaurants = objects {
-                self.restaurants = userRestaurants as! [Restaurant]
-            } else {
-                print("Error in restaurant query: \(error!)")
-            }
-        }
     }
 }

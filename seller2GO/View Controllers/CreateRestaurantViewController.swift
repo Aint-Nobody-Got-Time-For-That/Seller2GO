@@ -298,7 +298,7 @@ class CreateRestaurantViewController: FormViewController {
         
     }
     
-    // for enabling the Next Bar button
+    // for enabling the Create Bar button
     // return true to skip form validation
     private func isFormValidated() -> Bool {
         let valuesDictionary = form.values()
