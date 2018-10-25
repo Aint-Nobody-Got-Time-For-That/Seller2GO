@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import SwipeCellKit
 
-class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nav: UINavigationItem!
@@ -20,12 +21,31 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            print("delete")
+        }
+        
+        let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
+            print("Edit")
+        }
+        
+        // customize the action appearance
+        // deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction, editAction]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let restaurantCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
+        restaurantCell.delegate = self
         restaurantCell.selectionStyle = .none
         restaurantCell.restaurant = restaurants[indexPath.row]
         return restaurantCell

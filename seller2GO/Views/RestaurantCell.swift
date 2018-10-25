@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import SwipeCellKit
 
-class RestaurantCell: UITableViewCell {
+class RestaurantCell: SwipeTableViewCell {
 
     @IBOutlet weak var restaurantImageView: PFImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!

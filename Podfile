@@ -12,5 +12,6 @@ target 'seller2GO' do
 	pod 'PKHUD', '~> 5.0'
 	pod 'AlamofireImage', '~> 3.3'
   pod 'ImageRow', '~> 3.1'
+  pod 'SwipeCellKit'
 
 end
