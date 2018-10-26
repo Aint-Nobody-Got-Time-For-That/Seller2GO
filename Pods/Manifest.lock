@@ -13,7 +13,7 @@ PODS:
   - Parse/UI (1.17.1):
     - Parse/Core
   - PKHUD (5.1.0)
-  - SwipeCellKit (2.4.3)
+  - SwipeCellKit (2.5.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - Parse
   - Parse/UI
   - PKHUD (~> 5.0)
-  - SwipeCellKit (= 2.4.3)
+  - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -43,8 +43,8 @@ SPEC CHECKSUMS:
   ImageRow: 1ea483078bfa3d880a7fc76fdfcddfd5f29a9e6b
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
-  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
 
-PODFILE CHECKSUM: 351ef7d6014baf7c6d86a64016d1e89098cf096c
+PODFILE CHECKSUM: cdbf29fb95e7f296326205a0972080a01acd7b52
 
 COCOAPODS: 1.5.3
