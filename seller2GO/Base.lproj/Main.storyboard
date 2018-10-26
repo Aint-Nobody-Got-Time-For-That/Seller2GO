@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="-462" y="86"/>
         </scene>
-        <!--Create Restaurant View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="c4d-HV-Xeo">
             <objects>
-                <viewController id="ITU-8u-huM" customClass="CreateRestaurantViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ITU-8u-huM" customClass="CreateAccountViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBO-UT-kFi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,8 +84,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="45a-Zi-KFY"/>
                     <connections>
-                        <outlet property="nav" destination="45a-Zi-KFY" id="VPV-01-hf3"/>
-                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="goToRestaurantDetailSegue" id="Iec-pX-hEW"/>
+                        <outlet property="nav" destination="45a-Zi-KFY" id="rur-4a-8Su"/>
+                        <segue destination="x5L-bE-WRh" kind="presentation" identifier="goToUserRestaurantsSegue" id="Iec-pX-hEW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npm-6N-AMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,6 +346,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y7z-68-qXf"/>
+        <segue reference="Iec-pX-hEW"/>
     </inferredMetricsTieBreakers>
 </document>

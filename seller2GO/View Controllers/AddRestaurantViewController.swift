@@ -13,7 +13,7 @@ import PKHUD
 import Parse
 
 class AddRestaurantViewController: FormViewController {
-
+    
     @IBOutlet weak var nav: UINavigationItem!
     var createBarButtonItem: UIBarButtonItem!
     
@@ -23,9 +23,6 @@ class AddRestaurantViewController: FormViewController {
     var restaurantStreetField = false
     var restaurantCityField = false
     var restaurantZipCodeField = false
-    var dishNameField = false
-    var dishPriceField = false
-    var dishDescriptionField = false
     
     private func initializeForm() {
         form
@@ -165,92 +162,16 @@ class AddRestaurantViewController: FormViewController {
                         self.createBarButtonItem.isEnabled = false
                     }
                 })
-            
-            +++ Section("Dish")
-            <<< NameRow() {
-                $0.tag = "dishName"
-                $0.title = "Name"
-                $0.placeholder = "Fish Taco"
-                $0.add(rule: RuleRequired())
-                $0.add(rule: RuleGreaterOrEqualThan(min: "1"))
-                $0.validationOptions = .validatesOnChangeAfterBlurred
-                }
-                .cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .red
-                    }
-                }.onChange({ (row) in
-                    if let value = row.value, value.count >= 1 {
-                        self.dishNameField = true
-                    } else {
-                        self.dishNameField = false
-                    }
-                    
-                    if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
-                    } else {
-                        self.createBarButtonItem.isEnabled = false
-                    }
-                })
-            <<< ImageRow() {
-                $0.tag = "dishPhoto"
-                $0.title = "Photo"
-                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                $0.value = UIImage(named: "iconmonstr-eat")
-                $0.clearAction = .no
-            }
-            <<< DecimalRow() {
-                $0.tag = "dishPrice"
-                $0.useFormatterDuringInput = true
-                $0.title = "Price"
-                $0.placeholder = "0"
-                let formatter = CurrencyFormatter()
-                formatter.locale = .current
-                formatter.numberStyle = .currency
-                $0.formatter = formatter
-                }.onChange({ (row) in
-                    if row.value != nil {
-                        self.dishPriceField = true
-                    } else {
-                        self.dishPriceField = false
-                    }
-                    
-                    if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
-                    } else {
-                        self.createBarButtonItem.isEnabled = false
-                    }
-                })
-            <<< TextAreaRow() {
-                $0.tag = "dishDescription"
-                $0.placeholder = "Description"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
-                $0.add(rule: RuleRequired())
-                $0.add(rule: RuleGreaterOrEqualThan(min: "1"))
-                $0.validationOptions = .validatesOnChangeAfterBlurred
-                }.onChange({ (row) in
-                    if let value = row.value, value.count >= 1 {
-                        self.dishDescriptionField = true
-                    } else {
-                        self.dishDescriptionField = false
-                    }
-                    
-                    if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
-                    } else {
-                        self.createBarButtonItem.isEnabled = false
-                    }
-                })
     }
     
     // for enabling the Create Bar button
     // return true to skip form validation
     private func isFormValidated() -> Bool {
         let valuesDictionary = form.values()
-        return valuesDictionary["restaurantName"]! != nil && valuesDictionary["restaurantPhoneNumber"]! != nil && valuesDictionary["restaurantStreet"]! != nil && valuesDictionary["restaurantCity"]! != nil && valuesDictionary["restaurantState"]! != nil && valuesDictionary["restaurantZipCode"]! != nil && valuesDictionary["dishName"]! != nil && valuesDictionary["dishPhoto"]! != nil && valuesDictionary["dishPrice"]! != nil && valuesDictionary["dishDescription"]! != nil && restaurantNameField && restaurantPhoneNumberField && restaurantStreetField && restaurantCityField &&  restaurantZipCodeField && dishNameField && dishPriceField && dishDescriptionField
+        return valuesDictionary["restaurantName"]! != nil && valuesDictionary["restaurantPhoneNumber"]! != nil && valuesDictionary["restaurantStreet"]! != nil && valuesDictionary["restaurantCity"]! != nil && valuesDictionary["restaurantState"]! != nil && valuesDictionary["restaurantZipCode"]! != nil && restaurantNameField && restaurantPhoneNumberField && restaurantStreetField && restaurantCityField &&  restaurantZipCodeField
     }
     
-    private func getFormValues() -> (restaurantName: String, restaurantImage: UIImage, restaurantPhoneNumber: String,  restaurantAddress: String, dishName: String, dishPhoto: UIImage, dishPrice: String, dishDescription: String) {
+    private func getFormValues() -> (restaurantName: String, restaurantImage: UIImage, restaurantPhoneNumber: String,  restaurantAddress: String) {
         let valuesDictionary = form.values()
         
         let restaurantName = (valuesDictionary["restaurantName"] as! String)
@@ -263,12 +184,7 @@ class AddRestaurantViewController: FormViewController {
         let zipCode = (valuesDictionary["restaurantZipCode"] as! String)
         let restaurantAddress = "\(street) \(city) \(state) \(zipCode)"
         
-        let dishName = (valuesDictionary["dishName"] as! String)
-        let dishPhoto = (valuesDictionary["dishPhoto"] as! UIImage)
-        let dishPrice = String(valuesDictionary["dishPrice"] as! Double)
-        let dishDescription = (valuesDictionary["dishDescription"] as! String)
-        
-        return (restaurantName: restaurantName, restaurantImage: restaurantImage, restaurantPhoneNumber: restaurantPhoneNumber,  restaurantAddress: restaurantAddress, dishName: dishName, dishPhoto: dishPhoto, dishPrice: dishPrice, dishDescription: dishDescription)
+        return (restaurantName: restaurantName, restaurantImage: restaurantImage, restaurantPhoneNumber: restaurantPhoneNumber,  restaurantAddress: restaurantAddress)
     }
     
     @objc func tapCancel(_ sender: Any) {
@@ -276,49 +192,34 @@ class AddRestaurantViewController: FormViewController {
     }
     
     @objc func tapCreate(_ sender: Any) {
-        let (restaurantName, restaurantImage, restaurantPhoneNumber, restaurantAddress, dishName, dishPhoto, dishPrice, dishDescription) = getFormValues()
+        let (restaurantName, restaurantImage, restaurantPhoneNumber, restaurantAddress) = getFormValues()
         
         let newUserRestaurant = Restaurant()
         newUserRestaurant.photo = Restaurant.getPFFileFromImage(restaurantImage)!
         newUserRestaurant.name = restaurantName
         newUserRestaurant.address = restaurantAddress
         newUserRestaurant.phoneNumber = restaurantPhoneNumber
-        
-        let newMenuItem = MenuItem()
-        newMenuItem.photo = MenuItem.getPFFileFromImage(dishPhoto)!
-        newMenuItem.name = dishName
-        newMenuItem.price = dishPrice
-        newMenuItem.menuItemDescription = dishDescription
+        newUserRestaurant.addUniqueObject(PFUser.current()!, forKey: "user")
         
         // show PKHUD
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
         
-        newMenuItem.addUniqueObject(newUserRestaurant, forKey: "restaurant")
-        newMenuItem.saveInBackground { (success: Bool, error: Error?) in
+        newUserRestaurant.saveInBackground(block: { (success: Bool, error: Error?) in
+            
             if success {
-                
-                newUserRestaurant.addUniqueObject(PFUser.current()!, forKey: "user")
-                newUserRestaurant.saveInBackground(block: { (success: Bool, error: Error?) in
-                    
-                    if success {
-                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                        
-                    } else {
-                        print("new user restaurant save in background error: \(error!)")
-                        self.displayError(error!)
-                    }
-                    
+                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                    self.dismiss(animated: true, completion: nil)
                 })
                 
             } else {
-                print("new menu item save in background error: \(error!)")
+                print("new user restaurant save in background error: \(error!)")
                 self.displayError(error!)
             }
-        }
+            
+        })
+        
     }
     
     private func displayError(_ error: Error) {
@@ -333,7 +234,7 @@ class AddRestaurantViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // set up nav bar
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(AddRestaurantViewController.tapCancel(_:)))
         nav.leftBarButtonItem = cancelBarButtonItem
@@ -353,24 +254,4 @@ class AddRestaurantViewController: FormViewController {
         initializeForm()
     }
     
-    class CurrencyFormatter : NumberFormatter, FormatterProtocol {
-        override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, range rangep: UnsafeMutablePointer<NSRange>?) throws {
-            guard obj != nil else { return }
-            var str = string.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-            if !string.isEmpty, numberStyle == .currency && !string.contains(currencySymbol) {
-                // Check if the currency symbol is at the last index
-                if let formattedNumber = self.string(from: 1), String(formattedNumber[formattedNumber.index(before: formattedNumber.endIndex)...]) == currencySymbol {
-                    // This means the user has deleted the currency symbol. We cut the last number and then add the symbol automatically
-                    str = String(str[..<str.index(before: str.endIndex)])
-                    
-                }
-            }
-            obj?.pointee = NSNumber(value: (Double(str) ?? 0.0)/Double(pow(10.0, Double(minimumFractionDigits))))
-        }
-        
-        func getNewPosition(forPosition position: UITextPosition, inTextInput textInput: UITextInput, oldValue: String?, newValue: String?) -> UITextPosition {
-            return textInput.position(from: position, offset:((newValue?.count ?? 0) - (oldValue?.count ?? 0))) ?? position
-        }
-    }
-
 }
