@@ -22,7 +22,7 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @objc func tapBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tapAdd(_ sender: Any) {
@@ -69,13 +69,13 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        let backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: #selector(RestaurantMenuViewController.tapBack(_:)))
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .plain, target: self, action: #selector(RestaurantMenuViewController.tapBack(_:)))
         nav.leftBarButtonItem = backBarButtonItem
-        
-        let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: #selector(RestaurantMenuViewController.tapAdd(_:)))
+
+        let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(RestaurantMenuViewController.tapAdd(_:)))
         nav.rightBarButtonItem = addBarButtonItem
 
-        // title of nav
+//        // title of nav
         nav.title = "\(restaurant.name)'s Menu"
     }
 }

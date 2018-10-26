@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // check if user is logged in
         if PFUser.current() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let userRestaurantsViewController = storyboard.instantiateViewController(withIdentifier: "UserRestaurantsViewController") 
+            let navController = storyboard.instantiateViewController(withIdentifier: "navController") 
             
-            window?.rootViewController = userRestaurantsViewController
+            window?.rootViewController = navController
         }
         
         return true

@@ -142,10 +142,11 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         self.tableView.delegate = self
         
         // set up nav bar
-        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
         nav.leftBarButtonItem = logoutBarButtonItem
         
-        let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: nil, action: #selector(UserRestaurantsViewController.tapAdd(_:)))
+        let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(UserRestaurantsViewController.tapAdd(_:)))
         nav.rightBarButtonItem = addBarButtonItem
+        nav.title = "Your restaurants"
     }
 }
