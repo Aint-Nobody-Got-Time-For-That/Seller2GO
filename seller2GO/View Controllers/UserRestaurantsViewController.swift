@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SwipeCellKit
+import PKHUD
 
 class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate {
     
@@ -27,6 +28,43 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
             print("delete")
+            
+            let restaurantToDelete = self.restaurants[indexPath.row]
+            
+            let alertController = UIAlertController(title: "Delete Restaurant", message: "Are you sure you want to delete \(restaurantToDelete.name)?", preferredStyle: .alert)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                // handle cancel response here. Doing nothing will dismiss the view.
+            }
+            // add the cancel action to the alertController
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                
+                // show PKHUD
+                PKHUD.sharedHUD.contentView = PKHUDProgressView()
+                PKHUD.sharedHUD.show()
+                
+                restaurantToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
+                    
+                    if success {
+                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                            
+                            self.restaurants.remove(at: indexPath.row)
+                            
+                        })
+                    } else {
+                        print("delete user restaurant save in background error: \(error!)")
+                        self.displayError(error!)
+                    }
+                    
+                })
+            }
+            // add the OK action to the alert controller
+            alertController.addAction(OKAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
@@ -37,6 +75,16 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         // deleteAction.image = UIImage(named: "delete")
         
         return [deleteAction, editAction]
+    }
+    
+    private func displayError(_ error: Error) {
+        PKHUD.sharedHUD.hide(animated: true)
+        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
