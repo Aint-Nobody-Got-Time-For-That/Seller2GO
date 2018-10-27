@@ -43,21 +43,38 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
                 PKHUD.sharedHUD.contentView = PKHUDProgressView()
                 PKHUD.sharedHUD.show()
                 
-                restaurantToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
-                    
-                    if success {
-                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-                            
-                            self.restaurants.remove(at: indexPath.row)
-                            
+                let menuItemsQuery = PFQuery(className: "MenuItem")
+                menuItemsQuery.whereKey("restaurant", equalTo: restaurantToDelete)
+                menuItemsQuery.findObjectsInBackground { (items: [PFObject]?, error: Error?) in
+                    if error == nil, let items = items {
+                        // delete all menu items associated with this restaurant
+                        PFObject.deleteAll(inBackground: items, block: { (success: Bool, error: Error?) in
+                            if success {
+                                // delete restaurant
+                                restaurantToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
+                                    
+                                    if success {
+                                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                                            self.restaurants.remove(at: indexPath.row)
+                                        })
+                                    } else {
+                                        print("delete user restaurant save in background error: \(error!)")
+                                        self.displayError(error!)
+                                    }
+                                    
+                                })
+                            } else {
+                                print("delete all menu items error: \(error!)")
+                                self.displayError(error!)
+                            }
                         })
                     } else {
-                        print("delete user restaurant save in background error: \(error!)")
+                        print("find menu items in background error: \(error!)")
                         self.displayError(error!)
                     }
-                    
-                })
+                }
+                
             }
             // add the OK action to the alert controller
             alertController.addAction(OKAction)
