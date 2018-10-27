@@ -8,8 +8,10 @@
 
 import UIKit
 import Parse
+import SwipeCellKit
+import PKHUD
 
-class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate {
 
     @IBOutlet weak var nav: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
@@ -35,9 +37,75 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let menuItemCell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell") as! MenuItemCell
+        menuItemCell.delegate = self
         menuItemCell.selectionStyle = .none
         menuItemCell.menuItem = menuItems[indexPath.row]
         return menuItemCell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            print("delete")
+            
+            let itemToDelete = self.menuItems[indexPath.row]
+            
+            let alertController = UIAlertController(title: "Deleting Item", message: "Are you sure you want to delete \(itemToDelete.name)?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                // handle cancel response here. Doing nothing will dismiss the view.
+            }
+            // add the cancel action to the alertController
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                
+                // show PKHUD
+                PKHUD.sharedHUD.contentView = PKHUDProgressView()
+                PKHUD.sharedHUD.show()
+                
+                itemToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
+                    
+                    if success {
+                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                            
+                            self.menuItems.remove(at: indexPath.row)
+                            
+                        })
+                    } else {
+                        print("delete menu item save in background error: \(error!)")
+                        self.displayError(error!)
+                    }
+                    
+                })
+            }
+            // add the OK action to the alert controller
+            alertController.addAction(OKAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
+            print("Edit")
+        }
+        
+        // customize the action appearance
+        // deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction, editAction]
+    }
+    
+    private func displayError(_ error: Error) {
+        PKHUD.sharedHUD.hide(animated: true)
+        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

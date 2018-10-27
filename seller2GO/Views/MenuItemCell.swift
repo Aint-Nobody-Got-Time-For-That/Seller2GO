@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import SwipeCellKit
 
-class MenuItemCell: UITableViewCell {
+class MenuItemCell: SwipeTableViewCell {
 
     @IBOutlet weak var menuItemImageView: PFImageView!
     @IBOutlet weak var menuItemNameLabel: UILabel!
