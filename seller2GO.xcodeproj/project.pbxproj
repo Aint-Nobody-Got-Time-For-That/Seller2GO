@@ -25,6 +25,7 @@
 		57C75DD2217FC912005D0A85 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C75DD1217FC912005D0A85 /* AddRestaurantViewController.swift */; };
 		57C75DD4217FC939005D0A85 /* AddToMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C75DD3217FC939005D0A85 /* AddToMenuViewController.swift */; };
 		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
+		57F57BBB2184065F00D5CDF0 /* EditRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F57BBA2184065F00D5CDF0 /* EditRestaurantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		57C75DD1217FC912005D0A85 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		57C75DD3217FC939005D0A85 /* AddToMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToMenuViewController.swift; sourceTree = "<group>"; };
 		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		57F57BBA2184065F00D5CDF0 /* EditRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRestaurantViewController.swift; sourceTree = "<group>"; };
 		62A2D403C07BF974AE32CE25 /* Pods-seller2GO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GO.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GO/Pods-seller2GO.release.xcconfig"; sourceTree = "<group>"; };
 		643F47EE56149E0F4814A047 /* Pods-seller2GOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOTests/Pods-seller2GOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD591B1BECAE845DDAF1360 /* Pods-seller2GOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOTests/Pods-seller2GOTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				57C75DD1217FC912005D0A85 /* AddRestaurantViewController.swift */,
 				57C75DD3217FC939005D0A85 /* AddToMenuViewController.swift */,
 				570F19302183BEDD00A90E2E /* CreateAccountViewController.swift */,
+				57F57BBA2184065F00D5CDF0 /* EditRestaurantViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				57260A2B21795B0100826DC7 /* Keys.swift in Sources */,
 				57A83381217C328300C57471 /* MenuItemCell.swift in Sources */,
 				57A8337F217C248000C57471 /* RestaurantMenuViewController.swift in Sources */,
+				57F57BBB2184065F00D5CDF0 /* EditRestaurantViewController.swift in Sources */,
 				57C75DD4217FC939005D0A85 /* AddToMenuViewController.swift in Sources */,
 				57AD5552217D776D001D1E8D /* States.swift in Sources */,
 				34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */,

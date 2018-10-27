@@ -163,6 +163,7 @@
                         <outlet property="nav" destination="MEE-hb-3B6" id="b72-h4-jeq"/>
                         <outlet property="tableView" destination="yjn-xu-6yY" id="QW0-hb-1Go"/>
                         <segue destination="QoG-5s-BcQ" kind="presentation" identifier="addRestaurantSegue" modalTransitionStyle="crossDissolve" id="iVb-uB-Vgu"/>
+                        <segue destination="WTF-iv-Z4q" kind="presentation" identifier="editRestaurantSegue" id="oZu-HA-cmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NO3-Y4-s5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,7 +187,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cO-Ug-3wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="1601.649175412294"/>
+            <point key="canvasLocation" x="583" y="1760"/>
+        </scene>
+        <!--Edit Restaurant View Controller-->
+        <scene sceneID="XY5-pw-KA1">
+            <objects>
+                <viewController id="XPn-eE-Bbh" customClass="EditRestaurantViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zs4-ow-ZhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cfe-OL-6ir"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bdl-qE-N8o"/>
+                    <connections>
+                        <outlet property="nav" destination="bdl-qE-N8o" id="hIA-f9-T0q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JO6-Se-qZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2246" y="1760"/>
         </scene>
         <!--Add To Menu View Controller-->
         <scene sceneID="5fW-JZ-oZg">
@@ -205,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9o-D6-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="1631"/>
+            <point key="canvasLocation" x="4040.8000000000002" y="1629.5352323838083"/>
         </scene>
         <!--Restaurant Menu View Controller-->
         <scene sceneID="mAw-4h-yVh">
@@ -276,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-v2-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928.8" y="888.30584707646187"/>
+            <point key="canvasLocation" x="2585" y="888"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHl-a1-hmx">
@@ -312,7 +332,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbM-NA-J1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591.20000000000005" y="1601.649175412294"/>
+            <point key="canvasLocation" x="-137" y="1760"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yCW-s9-gX5">
@@ -330,7 +350,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa1-Va-p2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="1631"/>
+            <point key="canvasLocation" x="3279.1999999999998" y="1629.5352323838083"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aok-2g-doz">
@@ -349,6 +369,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSy-vz-Nsr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="148" y="888.30584707646187"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LbI-9h-GMu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WTF-iv-Z4q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X5g-FC-WI7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XPn-eE-Bbh" kind="relationship" relationship="rootViewController" id="gCi-vd-imf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ett-81-ptT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="1760"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

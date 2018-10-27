@@ -1,8 +1,8 @@
 //
-//  AddRestaurantViewController.swift
+//  EditRestaurantViewController.swift
 //  seller2GO
 //
-//  Created by Victor Li on 10/23/18.
+//  Created by Victor Li on 10/26/18.
 //  Copyright © 2018 Aint Nobody Got Time For That. All rights reserved.
 //
 
@@ -12,22 +12,26 @@ import ImageRow
 import PKHUD
 import Parse
 
-class AddRestaurantViewController: FormViewController {
-    
+class EditRestaurantViewController: FormViewController {
+
     @IBOutlet weak var nav: UINavigationItem!
-    var createBarButtonItem: UIBarButtonItem!
+    var restaurant: Restaurant!
+    var editBarButtonItem: UIBarButtonItem!
     
     // for form validation
-    var restaurantNameField = false
-    var restaurantPhoneNumberField = false
-    var restaurantStreetField = false
-    var restaurantCityField = false
-    var restaurantZipCodeField = false
+    var restaurantNameField = true
+    var restaurantPhoneNumberField = true
+    var restaurantStreetField = true
+    var restaurantCityField = true
+    var restaurantZipCodeField = true
     
     private func initializeForm() {
         form
-            +++ Section("Restaurant Info")
+            +++ Section("Restaurant Info", { (Section) in
+                Section.tag = "Restaurant Info"
+            })
             <<< NameRow() {
+                $0.value = restaurant.name
                 $0.tag = "restaurantName"
                 $0.title = "Name"
                 $0.placeholder = "Starbucks"
@@ -47,19 +51,26 @@ class AddRestaurantViewController: FormViewController {
                     }
                     
                     if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
+                        self.editBarButtonItem.isEnabled = true
                     } else {
-                        self.createBarButtonItem.isEnabled = false
+                        self.editBarButtonItem.isEnabled = false
                     }
                 })
-            <<< ImageRow() {
-                $0.tag = "restaurantImage"
-                $0.title = "Photo"
-                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                $0.value = UIImage(named: "iconmonstr-eat")
-                $0.clearAction = .no
-            }
+            <<< ImageRow() { row in
+                row.value = UIImage(named: "iconmonstr-eat")
+                row.tag = "restaurantImage"
+                row.title = "Photo"
+                row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                row.clearAction = .no
+                }.onChange({ (row) in
+                    if self.isFormValidated() {
+                        self.editBarButtonItem.isEnabled = true
+                    } else {
+                        self.editBarButtonItem.isEnabled = false
+                    }
+                })
             <<< PhoneRow() {
+                $0.value = restaurant.phoneNumber
                 $0.tag = "restaurantPhoneNumber"
                 $0.title = "Phone Number"
                 $0.placeholder = "+1 234 567 9012"
@@ -77,12 +88,13 @@ class AddRestaurantViewController: FormViewController {
                     }
                     
                     if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
+                        self.editBarButtonItem.isEnabled = true
                     } else {
-                        self.createBarButtonItem.isEnabled = false
+                        self.editBarButtonItem.isEnabled = false
                     }
                 })
             <<< TextRow() {
+                $0.value = restaurant.street
                 $0.tag = "restaurantStreet"
                 $0.title = "Street"
                 $0.placeholder = "123 Jane Street"
@@ -100,12 +112,13 @@ class AddRestaurantViewController: FormViewController {
                     }
                     
                     if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
+                        self.editBarButtonItem.isEnabled = true
                     } else {
-                        self.createBarButtonItem.isEnabled = false
+                        self.editBarButtonItem.isEnabled = false
                     }
                 })
             <<< TextRow() {
+                $0.value = restaurant.city
                 $0.tag = "restaurantCity"
                 $0.title = "City"
                 $0.placeholder = "San Francisco"
@@ -123,23 +136,31 @@ class AddRestaurantViewController: FormViewController {
                     }
                     
                     if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
+                        self.editBarButtonItem.isEnabled = true
                     } else {
-                        self.createBarButtonItem.isEnabled = false
+                        self.editBarButtonItem.isEnabled = false
                     }
                 })
             <<< AlertRow<String>() {
+                $0.value = restaurant.state
                 $0.tag = "restaurantState"
                 $0.title = "State"
                 $0.selectorTitle = "Select State"
                 $0.options = States
-                $0.value = "CA"
+
                 }
                 .onPresent{ _, to in
                     to.view.tintColor = .blue
-            }
+                }.onChange({ (row) in
+                    if self.isFormValidated() {
+                        self.editBarButtonItem.isEnabled = true
+                    } else {
+                        self.editBarButtonItem.isEnabled = false
+                    }
+                })
             
             <<< ZipCodeRow() {
+                $0.value = restaurant.zipCode
                 $0.tag = "restaurantZipCode"
                 $0.title = "Zip Code"
                 $0.placeholder = "90210"
@@ -157,14 +178,14 @@ class AddRestaurantViewController: FormViewController {
                     }
                     
                     if self.isFormValidated() {
-                        self.createBarButtonItem.isEnabled = true
+                        self.editBarButtonItem.isEnabled = true
                     } else {
-                        self.createBarButtonItem.isEnabled = false
+                        self.editBarButtonItem.isEnabled = false
                     }
                 })
     }
     
-    // for enabling the Create Bar button
+    // for enabling the Edit Bar button
     // return true to skip form validation
     private func isFormValidated() -> Bool {
         let valuesDictionary = form.values()
@@ -186,28 +207,36 @@ class AddRestaurantViewController: FormViewController {
         return (restaurantName: restaurantName, restaurantImage: restaurantImage, restaurantPhoneNumber: restaurantPhoneNumber, restaurantStreet: street, restaurantCity: city, restaurantState: state, restaurantZipCode: zipCode)
     }
     
+    private func displayError(_ error: Error) {
+        PKHUD.sharedHUD.hide(animated: true)
+        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+    }
+    
     @objc func tapCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func tapCreate(_ sender: Any) {
+    @objc func tapEdit(_ sender: Any) {
         let (restaurantName, restaurantImage, restaurantPhoneNumber, restaurantStreet, restaurantCity, restaurantState, restaurantZipCode) = getFormValues()
         
-        let newUserRestaurant = Restaurant()
-        newUserRestaurant.photo = Restaurant.getPFFileFromImage(restaurantImage)!
-        newUserRestaurant.name = restaurantName
-        newUserRestaurant.phoneNumber = restaurantPhoneNumber
-        newUserRestaurant.street = restaurantStreet
-        newUserRestaurant.city = restaurantCity
-        newUserRestaurant.state = restaurantState
-        newUserRestaurant.zipCode = restaurantZipCode
-        newUserRestaurant.addUniqueObject(PFUser.current()!, forKey: "user")
+        restaurant.name = restaurantName
+        restaurant.photo = Restaurant.getPFFileFromImage(restaurantImage)!
+        restaurant.phoneNumber = restaurantPhoneNumber
+        restaurant.street = restaurantStreet
+        restaurant.city = restaurantCity
+        restaurant.state = restaurantState
+        restaurant.zipCode = restaurantZipCode
         
         // show PKHUD
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
         
-        newUserRestaurant.saveInBackground(block: { (success: Bool, error: Error?) in
+        restaurant.saveInBackground(block: { (success: Bool, error: Error?) in
             
             if success {
                 PKHUD.sharedHUD.contentView = PKHUDSuccessView()
@@ -221,30 +250,20 @@ class AddRestaurantViewController: FormViewController {
             }
             
         })
-        
-    }
-    
-    private func displayError(_ error: Error) {
-        PKHUD.sharedHUD.hide(animated: true)
-        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default)
-        // add the OK action to the alert controller
-        alertController.addAction(OKAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // set up nav bar
-        let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(AddRestaurantViewController.tapCancel(_:)))
+        let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(EditRestaurantViewController.tapCancel(_:)))
         nav.leftBarButtonItem = cancelBarButtonItem
         
-        createBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(AddRestaurantViewController.tapCreate(_:)))
-        createBarButtonItem.isEnabled = false
-        nav.rightBarButtonItem = createBarButtonItem
-        nav.title = "New Restaurant"
+        editBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(EditRestaurantViewController.tapEdit(_:)))
+        editBarButtonItem.isEnabled = false
+        nav.rightBarButtonItem = editBarButtonItem
+        nav.title = "Edit Restaurant"
         
         // Enables the navigation accessory and stops navigation when a disabled row is encountered
         navigationOptions = RowNavigationOptions.Enabled.union(.StopDisabledRow)
@@ -254,6 +273,15 @@ class AddRestaurantViewController: FormViewController {
         rowKeyboardSpacing = 20
         
         initializeForm()
+        restaurant.photo.getDataInBackground(block: { (imageData: Data?, eroor: Error?) in
+            if let imageData = imageData {
+                let image = UIImage(data: imageData)
+                self.form.setValues(["restaurantImage": image!])
+                let section: Section?  = self.form.sectionBy(tag: "Restaurant Info")
+                section?.reload()
+            }
+        })
     }
     
+
 }

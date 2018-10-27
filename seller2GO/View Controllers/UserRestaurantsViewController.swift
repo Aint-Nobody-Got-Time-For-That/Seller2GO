@@ -27,12 +27,10 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
-            print("delete")
-            
             let restaurantToDelete = self.restaurants[indexPath.row]
             
             let alertController = UIAlertController(title: "Delete Restaurant", message: "Are you sure you want to delete \(restaurantToDelete.name)?", preferredStyle: .alert)
-
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
                 // handle cancel response here. Doing nothing will dismiss the view.
             }
@@ -68,7 +66,8 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
-            print("Edit")
+            let restaurantToEdit = self.restaurants[indexPath.row]
+            self.performSegue(withIdentifier: "editRestaurantSegue", sender: restaurantToEdit)
         }
         
         // customize the action appearance
@@ -108,8 +107,14 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "addRestaurantSegue" {
-            
+        if segue.identifier == "addRestaurantSegue" {
+            // nothing to add
+        } else if segue.identifier == "editRestaurantSegue" {
+            let restaurant = sender as! Restaurant
+            let navController = segue.destination as! UINavigationController
+            let editRestaurantViewController = navController.topViewController as! EditRestaurantViewController
+            editRestaurantViewController.restaurant = restaurant
+        } else { // for push table view
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
                 let restaurant = restaurants[indexPath.row]
@@ -117,7 +122,6 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
                 restaurantMenuViewController.restaurant = restaurant
                 
             }
-            
         }
     }
     

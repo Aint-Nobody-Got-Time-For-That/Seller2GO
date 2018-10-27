@@ -13,7 +13,10 @@ class Restaurant: PFObject, PFSubclassing {
     @NSManaged var photo: PFFile
     @NSManaged var name: String
     @NSManaged var phoneNumber: String
-    @NSManaged var address: String
+    @NSManaged var street: String
+    @NSManaged var city: String
+    @NSManaged var state: String
+    @NSManaged var zipCode: String
     
     static func parseClassName() -> String {
         return "Restaurant"
