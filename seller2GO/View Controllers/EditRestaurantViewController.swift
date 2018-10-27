@@ -273,7 +273,7 @@ class EditRestaurantViewController: FormViewController {
         rowKeyboardSpacing = 20
         
         initializeForm()
-        restaurant.photo.getDataInBackground(block: { (imageData: Data?, eroor: Error?) in
+        restaurant.photo.getDataInBackground(block: { (imageData: Data?, error: Error?) in
             if let imageData = imageData {
                 let image = UIImage(data: imageData)
                 self.form.setValues(["restaurantImage": image!])

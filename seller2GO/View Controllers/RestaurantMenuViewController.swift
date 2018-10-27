@@ -89,7 +89,8 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
-            print("Edit")
+            let itemToEdit = self.menuItems[indexPath.row]
+            self.performSegue(withIdentifier: "editMenuItemSegue", sender: itemToEdit)
         }
         
         // customize the action appearance
@@ -109,10 +110,16 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navVC = segue.destination as! UINavigationController
+        let navController = segue.destination as! UINavigationController
         
-        let addToMenuViewController = navVC.viewControllers.first as! AddToMenuViewController
-        addToMenuViewController.restaurant = restaurant
+        if segue.identifier == "editMenuItemSegue" {
+            let editMenuItemViewController = navController.viewControllers.first as! EditMenuItemViewController
+            let menuItem = sender as! MenuItem
+            editMenuItemViewController.menuItem = menuItem
+        } else if segue.identifier == "addToMenuSegue" {
+            let addToMenuViewController = navController.viewControllers.first as! AddToMenuViewController
+            addToMenuViewController.restaurant = restaurant
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
