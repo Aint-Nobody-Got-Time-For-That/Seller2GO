@@ -89,8 +89,13 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
-            let itemToEdit = self.menuItems[indexPath.row]
-            self.performSegue(withIdentifier: "editMenuItemSegue", sender: itemToEdit)
+            
+            let cell = tableView.cellForRow(at: indexPath) as! MenuItemCell
+            cell.hideSwipe(animated: true, completion: { (Bool) in
+                let itemToEdit = self.menuItems[indexPath.row]
+                self.performSegue(withIdentifier: "editMenuItemSegue", sender: itemToEdit)
+            })
+            
         }
         
         // customize the action appearance
