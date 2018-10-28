@@ -25,6 +25,8 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
+        let cell = tableView.cellForRow(at: indexPath) as! RestaurantCell
+        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
             let restaurantToDelete = self.restaurants[indexPath.row]
@@ -32,7 +34,8 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
             let alertController = UIAlertController(title: "Delete Restaurant", message: "Are you sure you want to delete \(restaurantToDelete.name)?", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // handle cancel response here. Doing nothing will dismiss the view.
+                // handle cancel response here.
+                cell.hideSwipe(animated: true)
             }
             // add the cancel action to the alertController
             alertController.addAction(cancelAction)
@@ -84,7 +87,6 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
             
-            let cell = tableView.cellForRow(at: indexPath) as! RestaurantCell
             cell.hideSwipe(animated: true, completion: { (Bool) in
                 let restaurantToEdit = self.restaurants[indexPath.row]
                 self.performSegue(withIdentifier: "editRestaurantSegue", sender: restaurantToEdit)
