@@ -16,11 +16,7 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nav: UINavigationItem!
     
-    var restaurants: [Restaurant] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var restaurants: [Restaurant] = []
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
@@ -28,61 +24,65 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.cellForRow(at: indexPath) as! RestaurantCell
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            // handle action by updating model with deletion
+            
             let restaurantToDelete = self.restaurants[indexPath.row]
             
-            let alertController = UIAlertController(title: "Delete Restaurant", message: "Are you sure you want to delete \(restaurantToDelete.name)?", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // handle cancel response here.
-                cell.hideSwipe(animated: true)
-            }
-            // add the cancel action to the alertController
-            alertController.addAction(cancelAction)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            cell.hideSwipe(animated: true, completion: { (Bool) in
+                let alertController = UIAlertController(title: "Delete Restaurant", message: "Are you sure you want to delete \(restaurantToDelete.name)?", preferredStyle: .alert)
                 
-                // show PKHUD
-                PKHUD.sharedHUD.contentView = PKHUDProgressView()
-                PKHUD.sharedHUD.show()
-                
-                let menuItemsQuery = PFQuery(className: "MenuItem")
-                menuItemsQuery.whereKey("restaurant", equalTo: restaurantToDelete)
-                menuItemsQuery.findObjectsInBackground { (items: [PFObject]?, error: Error?) in
-                    if error == nil, let items = items {
-                        // delete all menu items associated with this restaurant
-                        PFObject.deleteAll(inBackground: items, block: { (success: Bool, error: Error?) in
-                            if success {
-                                // delete restaurant
-                                restaurantToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
-                                    
-                                    if success {
-                                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-                                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-                                            self.restaurants.remove(at: indexPath.row)
-                                        })
-                                    } else {
-                                        print("delete user restaurant save in background error: \(error!)")
-                                        self.displayError(error!)
-                                    }
-                                    
-                                })
-                            } else {
-                                print("delete all menu items error: \(error!)")
-                                self.displayError(error!)
-                            }
-                        })
-                    } else {
-                        print("find menu items in background error: \(error!)")
-                        self.displayError(error!)
-                    }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                    // handle cancel response here.
+                    cell.hideSwipe(animated: true)
                 }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
                 
-            }
-            // add the OK action to the alert controller
-            alertController.addAction(OKAction)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (okAction) in
+                    
+                    // show PKHUD
+                    PKHUD.sharedHUD.contentView = PKHUDProgressView()
+                    PKHUD.sharedHUD.show()
+                    
+                    let menuItemsQuery = PFQuery(className: "MenuItem")
+                    menuItemsQuery.whereKey("restaurant", equalTo: restaurantToDelete)
+                    menuItemsQuery.findObjectsInBackground { (items: [PFObject]?, error: Error?) in
+                        if error == nil, let items = items {
+                            // delete all menu items associated with this restaurant
+                            PFObject.deleteAll(inBackground: items, block: { (success: Bool, error: Error?) in
+                                if success {
+                                    // delete restaurant
+                                    restaurantToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
+                                        
+                                        if success {
+                                            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                                            PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                                                self.restaurants.remove(at: indexPath.row)
+                                                action.fulfill(with: ExpansionFulfillmentStyle.delete)
+                                            })
+                                        } else {
+                                            print("delete user restaurant save in background error: \(error!)")
+                                            self.displayError(error!)
+                                        }
+                                        
+                                    })
+                                } else {
+                                    print("delete all menu items error: \(error!)")
+                                    self.displayError(error!)
+                                }
+                            })
+                        } else {
+                            print("find menu items in background error: \(error!)")
+                            self.displayError(error!)
+                        }
+                    }
+
+                }
+                // add the OK action to the alert controller
+                alertController.addAction(OKAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            })
             
-            self.present(alertController, animated: true, completion: nil)
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
@@ -98,6 +98,15 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         // deleteAction.image = UIImage(named: "delete")
         
         return [deleteAction, editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        
+        return options
+        
     }
     
     private func displayError(_ error: Error) {
@@ -157,6 +166,7 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         restaurantQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if error == nil, let userRestaurants = objects {
                 self.restaurants = userRestaurants as! [Restaurant]
+                self.tableView.reloadData()
             } else {
                 print("Error in restaurant query: \(error!)")
             }

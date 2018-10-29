@@ -17,11 +17,7 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     
     var restaurant: Restaurant!
-    var menuItems: [MenuItem] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var menuItems: [MenuItem] = []
     
     @objc func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -51,45 +47,46 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
             
-            let itemToDelete = self.menuItems[indexPath.row]
-            
-            let alertController = UIAlertController(title: "Deleting Item", message: "Are you sure you want to delete \(itemToDelete.name)?", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // handle cancel response here.
-                cell.hideSwipe(animated: true)
-            }
-            // add the cancel action to the alertController
-            alertController.addAction(cancelAction)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            cell.hideSwipe(animated: true, completion: { (Bool) in
+                let itemToDelete = self.menuItems[indexPath.row]
                 
-//                // show PKHUD
-//                PKHUD.sharedHUD.contentView = PKHUDProgressView()
-//                PKHUD.sharedHUD.show()
-//
-//                itemToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
-//
-//                    if success {
-//                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-//                        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-//
-//                            self.menuItems.remove(at: indexPath.row)
-//
-//                        })
-//                    } else {
-//                        print("delete menu item save in background error: \(error!)")
-//                        self.displayError(error!)
-//                    }
-//
-//                })
+                let alertController = UIAlertController(title: "Deleting Item", message: "Are you sure you want to delete \(itemToDelete.name)?", preferredStyle: .alert)
                 
-                self.menuItems.remove(at: indexPath.row)
-            }
-            // add the OK action to the alert controller
-            alertController.addAction(OKAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                    // handle cancel response here.
+                    cell.hideSwipe(animated: true)
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (okAction) in
+                    
+                    // show PKHUD
+                    PKHUD.sharedHUD.contentView = PKHUDProgressView()
+                    PKHUD.sharedHUD.show()
+                    
+                    itemToDelete.deleteInBackground(block: { (success: Bool, error: Error?) in
+                        
+                        if success {
+                            PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                            PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                                
+                                self.menuItems.remove(at: indexPath.row)
+                                action.fulfill(with: ExpansionFulfillmentStyle.delete)
+                            })
+                        } else {
+                            print("delete menu item save in background error: \(error!)")
+                            self.displayError(error!)
+                        }
+                        
+                    })
+                    
+                }
+                // add the OK action to the alert controller
+                alertController.addAction(OKAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            })
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
@@ -105,6 +102,15 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         // deleteAction.image = UIImage(named: "delete")
         
         return [deleteAction, editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        
+        return options
+        
     }
     
     private func displayError(_ error: Error) {
@@ -140,6 +146,7 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         menuItemQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if error == nil, let items = objects {
                 self.menuItems = items as! [MenuItem]
+                self.tableView.reloadData()
             } else {
                 print("Error in restaurant query: \(error!)")
             }
