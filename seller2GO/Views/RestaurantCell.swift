@@ -22,9 +22,9 @@ class RestaurantCell: SwipeTableViewCell {
             restaurantImageView.file = restaurant.photo
             restaurantImageView.loadInBackground()
             
-            restaurantAddress.text = "\(restaurant.street) \(restaurant.city) \(restaurant.state) \(restaurant.zipCode)"
+            restaurantAddress.text = "\(restaurant.street), \(restaurant.city), \(restaurant.state) \(restaurant.zipCode)"
             restaurantNameLabel.text = restaurant.name
-            restaurantPhoneNumberLabel.text = "Phone Number: \(restaurant.phoneNumber)"
+            restaurantPhoneNumberLabel.text = restaurant.phoneNumber
         }
     }
     

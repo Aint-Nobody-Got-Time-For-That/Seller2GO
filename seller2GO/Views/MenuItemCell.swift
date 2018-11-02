@@ -23,7 +23,7 @@ class MenuItemCell: SwipeTableViewCell {
             menuItemImageView.loadInBackground()
             
             menuItemNameLabel.text = menuItem.name
-            menuItemPriceLabel.text = String(menuItem.price)
+            menuItemPriceLabel.text = "$\(menuItem.price)"
             menuItemDescriptionLabel.text = menuItem.menuItemDescription
         }
     }
@@ -31,6 +31,8 @@ class MenuItemCell: SwipeTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        menuItemImageView.layer.cornerRadius = 3
+        menuItemImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

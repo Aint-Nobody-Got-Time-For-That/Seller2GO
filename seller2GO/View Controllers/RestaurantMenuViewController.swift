@@ -158,6 +158,8 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 110
         
         let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .plain, target: self, action: #selector(RestaurantMenuViewController.tapBack(_:)))
         nav.leftBarButtonItem = backBarButtonItem
