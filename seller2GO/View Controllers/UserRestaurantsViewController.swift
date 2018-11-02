@@ -178,6 +178,8 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 110
         
         // set up nav bar
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
