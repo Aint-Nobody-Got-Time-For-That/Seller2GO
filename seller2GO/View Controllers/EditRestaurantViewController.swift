@@ -258,9 +258,11 @@ class EditRestaurantViewController: FormViewController {
 
         // set up nav bar
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(EditRestaurantViewController.tapCancel(_:)))
+        cancelBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.leftBarButtonItem = cancelBarButtonItem
         
         editBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(EditRestaurantViewController.tapEdit(_:)))
+        editBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         editBarButtonItem.isEnabled = false
         nav.rightBarButtonItem = editBarButtonItem
         nav.title = "Edit Restaurant"

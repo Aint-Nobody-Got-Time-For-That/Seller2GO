@@ -183,9 +183,11 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
         
         // set up nav bar
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(UserRestaurantsViewController.tapLogout(_:)))
+        logoutBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.leftBarButtonItem = logoutBarButtonItem
         
         let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(UserRestaurantsViewController.tapAdd(_:)))
+        addBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.rightBarButtonItem = addBarButtonItem
         nav.title = "Your restaurants"
     }
