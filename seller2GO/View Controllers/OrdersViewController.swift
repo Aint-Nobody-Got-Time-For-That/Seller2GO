@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import Parse
 
-class OrdersViewController: UIViewController {
+class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var restaurantId: String!
+    var orders: [Order]  = []
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return orders.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let orderCell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
+        orderCell.order = orders[indexPath.row]
+        return orderCell
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -21,7 +38,21 @@ class OrdersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(restaurantId!)
+        
+        let ordersQuery = PFQuery(className: "Order")
+        ordersQuery.whereKey("restaurantID", equalTo: restaurantId!)
+        
+        ordersQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            
+            if error == nil, let orders = objects {
+                
+                self.orders = orders as! [Order]
+                self.tableView.reloadData()
+                
+            } else {
+                print("Error in orders query: \(error!)")
+            }
+        }
     }
 
     /*

@@ -16,6 +16,7 @@
 		571852662197E1FA00E2AF88 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852652197E1FA00E2AF88 /* OrdersViewController.swift */; };
 		571852682197E60700E2AF88 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852672197E60700E2AF88 /* OrderItem.swift */; };
 		5718526A2197E61D00E2AF88 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852692197E61D00E2AF88 /* Order.swift */; };
+		5718526C2197EAB900E2AF88 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5718526B2197EAB900E2AF88 /* OrderCell.swift */; };
 		57260A2B21795B0100826DC7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2A21795B0100826DC7 /* Keys.swift */; };
 		57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2C21795B1A00826DC7 /* KeysSample.swift */; };
 		57260A2F21795C2600826DC7 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2E21795C2600826DC7 /* Restaurant.swift */; };
@@ -45,6 +46,7 @@
 		571852652197E1FA00E2AF88 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		571852672197E60700E2AF88 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		571852692197E61D00E2AF88 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		5718526B2197EAB900E2AF88 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		57260A2A21795B0100826DC7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		57260A2C21795B1A00826DC7 /* KeysSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysSample.swift; sourceTree = "<group>"; };
 		57260A2E21795C2600826DC7 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				5778232D217BBBBB00539928 /* RestaurantCell.swift */,
 				57A83380217C328300C57471 /* MenuItemCell.swift */,
+				5718526B2197EAB900E2AF88 /* OrderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				570F19312183BEDD00A90E2E /* CreateAccountViewController.swift in Sources */,
 				5778232E217BBBBB00539928 /* RestaurantCell.swift in Sources */,
+				5718526C2197EAB900E2AF88 /* OrderCell.swift in Sources */,
 				57310D80217AC98700F2B037 /* UserRestaurantsViewController.swift in Sources */,
 				5718526A2197E61D00E2AF88 /* Order.swift in Sources */,
 				57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */,
