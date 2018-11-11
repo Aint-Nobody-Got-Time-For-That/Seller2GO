@@ -151,8 +151,15 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
                 let restaurant = restaurants[indexPath.row]
-                let restaurantMenuViewController = segue.destination as! RestaurantMenuViewController
+                let tabVC = segue.destination as! UITabBarController
+                
+                // set values for all the view controllers contained in the tab bar controllers
+                let restaurantMenuViewController = tabVC.viewControllers?.first as! RestaurantMenuViewController
                 restaurantMenuViewController.restaurant = restaurant
+                
+                let restaurantId = restaurant.objectId!
+                let ordersViewController = tabVC.viewControllers?[1] as! OrdersViewController
+                ordersViewController.restaurantId = restaurantId
                 
             }
         }

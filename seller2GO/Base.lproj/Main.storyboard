@@ -181,7 +181,7 @@
                                             <outlet property="restaurantImageView" destination="GAb-xh-KuU" id="v6y-vl-oPX"/>
                                             <outlet property="restaurantNameLabel" destination="1gI-kO-qZa" id="3eN-Se-wrz"/>
                                             <outlet property="restaurantPhoneNumberLabel" destination="riR-HW-20u" id="y7O-Ia-TTe"/>
-                                            <segue destination="dXc-h0-Ouh" kind="show" id="I6m-3Y-CXM"/>
+                                            <segue destination="kXL-Ej-MSS" kind="show" id="I6m-3Y-CXM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -263,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15F-Vw-khw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4729" y="924"/>
+            <point key="canvasLocation" x="5668" y="923.38830584707648"/>
         </scene>
         <!--Add To Menu View Controller-->
         <scene sceneID="5fW-JZ-oZg">
@@ -282,9 +282,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9o-D6-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4040.8000000000002" y="1629.5352323838083"/>
+            <point key="canvasLocation" x="5302" y="1731"/>
         </scene>
-        <!--Restaurant Menu View Controller-->
+        <!--Menu-->
         <scene sceneID="mAw-4h-yVh">
             <objects>
                 <viewController id="dXc-h0-Ouh" customClass="RestaurantMenuViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QHC-dk-9JP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuItemCell" rowHeight="110" id="0k7-gU-7Cx" customClass="MenuItemCell" customModule="Seller2GO" customModuleProvider="target">
@@ -363,6 +363,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1O2-LR-tow"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Menu" id="MzH-Af-6ed"/>
                     <navigationItem key="navigationItem" id="qiX-b8-Nem"/>
                     <connections>
                         <outlet property="nav" destination="qiX-b8-Nem" id="aYQ-Cp-NZe"/>
@@ -373,7 +374,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXI-v2-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="888"/>
+            <point key="canvasLocation" x="3849" y="923"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHl-a1-hmx">
@@ -420,6 +421,34 @@
             </objects>
             <point key="canvasLocation" x="-137" y="1760"/>
         </scene>
+        <!--Orders-->
+        <scene sceneID="bZ3-GB-x1p">
+            <objects>
+                <viewController id="ZqK-2o-Ze1" customClass="OrdersViewController" customModule="Seller2GO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wUo-sP-1Le">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SNz-9w-RBk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SNz-9w-RBk" firstAttribute="trailing" secondItem="6gL-JV-cCR" secondAttribute="trailing" id="1bz-om-cx3"/>
+                            <constraint firstItem="SNz-9w-RBk" firstAttribute="leading" secondItem="6gL-JV-cCR" secondAttribute="leading" id="49p-RI-fCv"/>
+                            <constraint firstItem="SNz-9w-RBk" firstAttribute="bottom" secondItem="6gL-JV-cCR" secondAttribute="bottom" id="Bmi-ym-yT6"/>
+                            <constraint firstItem="SNz-9w-RBk" firstAttribute="top" secondItem="6gL-JV-cCR" secondAttribute="top" id="dDa-A3-XRF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6gL-JV-cCR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Orders" id="HZm-ey-Ayr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XMI-40-bxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3256.8000000000002" y="2184.5577211394307"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yCW-s9-gX5">
             <objects>
@@ -440,7 +469,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa1-Va-p2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279.1999999999998" y="1629.5352323838083"/>
+            <point key="canvasLocation" x="4406" y="1730"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aok-2g-doz">
@@ -506,7 +535,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdV-PQ-d7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3898" y="924"/>
+            <point key="canvasLocation" x="4836" y="923.38830584707648"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wm3-nD-MaO">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kXL-Ej-MSS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KXf-TB-Lsz">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dXc-h0-Ouh" kind="relationship" relationship="viewControllers" id="epQ-r9-Gce"/>
+                        <segue destination="ZqK-2o-Ze1" kind="relationship" relationship="viewControllers" id="rul-zq-tgj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iSo-UC-wBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="887.40629685157433"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

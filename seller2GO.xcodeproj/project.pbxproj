@@ -13,6 +13,9 @@
 		34253F0121781DEF00C2317A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0021781DEF00C2317A /* Assets.xcassets */; };
 		34253F0421781DEF00C2317A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34253F0221781DEF00C2317A /* LaunchScreen.storyboard */; };
 		570F19312183BEDD00A90E2E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F19302183BEDD00A90E2E /* CreateAccountViewController.swift */; };
+		571852662197E1FA00E2AF88 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852652197E1FA00E2AF88 /* OrdersViewController.swift */; };
+		571852682197E60700E2AF88 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852672197E60700E2AF88 /* OrderItem.swift */; };
+		5718526A2197E61D00E2AF88 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571852692197E61D00E2AF88 /* Order.swift */; };
 		57260A2B21795B0100826DC7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2A21795B0100826DC7 /* Keys.swift */; };
 		57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2C21795B1A00826DC7 /* KeysSample.swift */; };
 		57260A2F21795C2600826DC7 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A2E21795C2600826DC7 /* Restaurant.swift */; };
@@ -39,6 +42,9 @@
 		34253F0521781DEF00C2317A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C1B1A7C6071E949D39EB793 /* Pods-seller2GOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seller2GOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-seller2GOUITests/Pods-seller2GOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		570F19302183BEDD00A90E2E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		571852652197E1FA00E2AF88 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		571852672197E60700E2AF88 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		571852692197E61D00E2AF88 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		57260A2A21795B0100826DC7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		57260A2C21795B1A00826DC7 /* KeysSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysSample.swift; sourceTree = "<group>"; };
 		57260A2E21795C2600826DC7 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 				570F19302183BEDD00A90E2E /* CreateAccountViewController.swift */,
 				57F57BBA2184065F00D5CDF0 /* EditRestaurantViewController.swift */,
 				57F57BBD2184425200D5CDF0 /* EditMenuItemViewController.swift */,
+				571852652197E1FA00E2AF88 /* OrdersViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -162,6 +169,8 @@
 			children = (
 				57260A2E21795C2600826DC7 /* Restaurant.swift */,
 				57310D81217ADCDE00F2B037 /* MenuItem.swift */,
+				571852672197E60700E2AF88 /* OrderItem.swift */,
+				571852692197E61D00E2AF88 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 				570F19312183BEDD00A90E2E /* CreateAccountViewController.swift in Sources */,
 				5778232E217BBBBB00539928 /* RestaurantCell.swift in Sources */,
 				57310D80217AC98700F2B037 /* UserRestaurantsViewController.swift in Sources */,
+				5718526A2197E61D00E2AF88 /* Order.swift in Sources */,
 				57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */,
 				57260A2D21795B1A00826DC7 /* KeysSample.swift in Sources */,
 				57C75DD2217FC912005D0A85 /* AddRestaurantViewController.swift in Sources */,
@@ -311,10 +321,12 @@
 				57F57BBE2184425200D5CDF0 /* EditMenuItemViewController.swift in Sources */,
 				57260A2B21795B0100826DC7 /* Keys.swift in Sources */,
 				57A83381217C328300C57471 /* MenuItemCell.swift in Sources */,
+				571852682197E60700E2AF88 /* OrderItem.swift in Sources */,
 				57A8337F217C248000C57471 /* RestaurantMenuViewController.swift in Sources */,
 				57F57BBB2184065F00D5CDF0 /* EditRestaurantViewController.swift in Sources */,
 				57C75DD4217FC939005D0A85 /* AddToMenuViewController.swift in Sources */,
 				57AD5552217D776D001D1E8D /* States.swift in Sources */,
+				571852662197E1FA00E2AF88 /* OrdersViewController.swift in Sources */,
 				34253EFA21781DEA00C2317A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
