@@ -1,5 +1,5 @@
 //
-//  OrdersViewController.swift
+//  RestaurantOrdersViewController.swift
 //  seller2GO
 //
 //  Created by Victor Li on 11/10/18.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,7 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let orderCell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
+        let orderCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantOrderCell") as! RestaurantOrderCell
         orderCell.order = orders[indexPath.row]
         return orderCell
     }
@@ -55,14 +55,14 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
 
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let order = orders[indexPath.row]
+            
+            let orderViewController = segue.destination as! OrderViewController
+            orderViewController.order = order
+        }
     }
-    */
-
 }

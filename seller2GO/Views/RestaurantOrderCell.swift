@@ -1,5 +1,5 @@
 //
-//  OrderCell.swift
+//  RestaurantOrderCell.swift
 //  seller2GO
 //
 //  Created by Victor Li on 11/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderCell: UITableViewCell {
+class RestaurantOrderCell: UITableViewCell {
 
     @IBOutlet weak var buyerLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!

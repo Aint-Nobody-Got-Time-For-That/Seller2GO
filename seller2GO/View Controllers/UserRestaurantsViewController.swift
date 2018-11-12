@@ -158,7 +158,7 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
                 restaurantMenuViewController.restaurant = restaurant
                 
                 let restaurantId = restaurant.objectId!
-                let ordersViewController = tabVC.viewControllers?[1] as! OrdersViewController
+                let ordersViewController = tabVC.viewControllers?[1] as! RestaurantOrdersViewController
                 ordersViewController.restaurantId = restaurantId
                 
             }
