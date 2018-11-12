@@ -27,6 +27,7 @@
 		57A83381217C328300C57471 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A83380217C328300C57471 /* MenuItemCell.swift */; };
 		57AD5552217D776D001D1E8D /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AD5551217D776D001D1E8D /* States.swift */; };
 		57C57442219947CC00A74496 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C57441219947CC00A74496 /* OrderViewController.swift */; };
+		57C5744421994D7500A74496 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C5744321994D7500A74496 /* OrderCell.swift */; };
 		57C75DD2217FC912005D0A85 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C75DD1217FC912005D0A85 /* AddRestaurantViewController.swift */; };
 		57C75DD4217FC939005D0A85 /* AddToMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C75DD3217FC939005D0A85 /* AddToMenuViewController.swift */; };
 		57CBB6CB2178FF61005ECFD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */; };
@@ -58,6 +59,7 @@
 		57A83380217C328300C57471 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		57AD5551217D776D001D1E8D /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		57C57441219947CC00A74496 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		57C5744321994D7500A74496 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		57C75DD1217FC912005D0A85 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		57C75DD3217FC939005D0A85 /* AddToMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToMenuViewController.swift; sourceTree = "<group>"; };
 		57CBB6CA2178FF61005ECFD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				5778232D217BBBBB00539928 /* RestaurantCell.swift */,
 				57A83380217C328300C57471 /* MenuItemCell.swift */,
 				5718526B2197EAB900E2AF88 /* RestaurantOrderCell.swift */,
+				57C5744321994D7500A74496 /* OrderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				57310D82217ADCDE00F2B037 /* MenuItem.swift in Sources */,
 				57F57BBE2184425200D5CDF0 /* EditMenuItemViewController.swift in Sources */,
 				57260A2B21795B0100826DC7 /* Keys.swift in Sources */,
+				57C5744421994D7500A74496 /* OrderCell.swift in Sources */,
 				57A83381217C328300C57471 /* MenuItemCell.swift in Sources */,
 				571852682197E60700E2AF88 /* OrderItem.swift in Sources */,
 				57A8337F217C248000C57471 /* RestaurantMenuViewController.swift in Sources */,

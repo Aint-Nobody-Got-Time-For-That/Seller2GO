@@ -21,9 +21,9 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let orderCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantOrderCell") as! RestaurantOrderCell
-        orderCell.order = orders[indexPath.row]
-        return orderCell
+        let restaurantOrderCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantOrderCell") as! RestaurantOrderCell
+        restaurantOrderCell.order = orders[indexPath.row]
+        return restaurantOrderCell
     }
 
     override func viewDidLoad() {
@@ -63,6 +63,15 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
             
             let orderViewController = segue.destination as! OrderViewController
             orderViewController.order = order
+            
+            // getting orderItems from order. Have to cast to arrays of dictionaries
+            // For some reason, cannot cast to OrderItem. Have to individually cast each key/value pair
+//            let orderItems = order.value(forKey: "order")! as! [Any]
+//
+//            // array of dictionaries
+//            let items = orderItems[0] as! [[String: Any]]
+//
+//            orderViewController.orderItems = items
         }
     }
 }
