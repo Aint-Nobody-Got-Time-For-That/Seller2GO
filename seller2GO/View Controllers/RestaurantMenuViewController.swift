@@ -169,7 +169,6 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         addBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.rightBarButtonItem = addBarButtonItem
 
-//        // title of nav
         nav.title = "\(restaurant.name)'s Menu"
     }
 }

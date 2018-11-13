@@ -54,6 +54,10 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @objc func tapBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orderItems.count
     }
@@ -96,11 +100,15 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .plain, target: self, action: #selector(OrderViewController.tapBack(_:)))
+        backBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        nav.leftBarButtonItem = backBarButtonItem
+        
         let removeBarButtonItem = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(OrderViewController.tapRemove(_:)))
         removeBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.rightBarButtonItem = removeBarButtonItem
         
-        nav.title = "Order"
+        nav.title = "\(order.buyerName)'s Order"
     }
 
 }
