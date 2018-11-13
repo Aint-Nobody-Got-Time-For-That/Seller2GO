@@ -14,6 +14,7 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var tableView: UITableView!
     
     var restaurantId: String!
+    var restaurantName: String!
     var orders: [Order]  = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +64,8 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
             
             let orderViewController = segue.destination as! OrderViewController
             orderViewController.order = order
+            orderViewController.restaurantName = restaurantName
+            
             
             // getting orderItems from order. Have to cast to arrays of dictionaries
             // For some reason, cannot cast to OrderItem. Have to individually cast each key/value pair

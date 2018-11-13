@@ -8,17 +8,33 @@
 
 import UIKit
 import Parse
+import Alamofire
 
 class OrderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var order: Order!
+    var restaurantName: String!
     var orderItems: [OrderItem] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orderItems.count
     }
     
+    func sendMessage(twilioNumber: String, buyerPhoneNumber: String, message: String) {
+        let accountSID = Keys.TWILIOSID
+        let authToken = Keys.TWILIOAUTH
+        
+        let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
+        let parameters = ["From": twilioNumber, "To": buyerPhoneNumber, "Body": message]
+        
+        Alamofire.request(url, method: .post, parameters: parameters)
+            .authenticate(user: accountSID, password: authToken)
+            .responseJSON { response in
+                debugPrint(response)
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let orderCell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
         orderCell.orderItem = orderItems[indexPath.row]
@@ -44,6 +60,12 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
 
+    @IBAction func didTapReady(_ sender: Any) {
+        let twilioNumber = Keys.TWILIONUMBER
+        let message = "Your Order from \(restaurantName!) is Ready!"
+        let buyerNumber = order.phoneNumber
+        sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
