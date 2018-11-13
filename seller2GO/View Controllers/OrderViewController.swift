@@ -61,30 +61,10 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @IBAction func didTapReady(_ sender: Any) {
-        
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
-
-        let deleteTheseItems: [PFObject] = [order!] + orderItems
-        PFObject.deleteAll(inBackground: deleteTheseItems) { (success: Bool, error: Error?) in
-
-            if success {
-
-                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-
-                    // text buyer
-                    let twilioNumber = Keys.TWILIONUMBER
-                    let message = "Your Order from \(self.restaurantName!) is Ready!"
-                    let buyerNumber = self.order.phoneNumber
-                    self.sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
-                    self.navigationController?.popViewController(animated: true)
-                })
-            } else {
-                print("delete order and order items in background error: \(error!)")
-            }
-        }
-        
+        let twilioNumber = Keys.TWILIONUMBER
+        let message = "Your Order from \(self.restaurantName!) is Ready!"
+        let buyerNumber = self.order.phoneNumber
+        self.sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
     }
     
     override func viewDidLoad() {

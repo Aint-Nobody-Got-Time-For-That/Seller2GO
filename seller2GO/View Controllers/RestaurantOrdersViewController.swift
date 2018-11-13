@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PKHUD
 
 class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -26,6 +27,22 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
         restaurantOrderCell.order = orders[indexPath.row]
         return restaurantOrderCell
     }
+    
+    /*
+    func deleteOrder() {
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let deleteTheseItems: [PFObject] = [order!] + orderItems
+        PFObject.deleteAll(inBackground: deleteTheseItems) { (success: Bool, error: Error?) in
+            if success {
+                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in })
+            } else {
+                print("delete order and order items in background error: \(error!)")
+            }
+        }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
