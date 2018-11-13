@@ -85,6 +85,9 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
             
         }
         
+        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.2352941176, blue: 0.1882352941, alpha: 1)
+        deleteAction.image = UIImage(named: "Trash Icon")
+        
         let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
             
             cell.hideSwipe(animated: true, completion: { (Bool) in
@@ -94,8 +97,8 @@ class UserRestaurantsViewController: UIViewController, UITableViewDataSource, UI
             
         }
         
-        // customize the action appearance
-        // deleteAction.image = UIImage(named: "delete")
+        editAction.backgroundColor = #colorLiteral(red: 0.7803494334, green: 0.7761332393, blue: 0.7967314124, alpha: 1)
+        editAction.image = UIImage(named: "iconmonstr-pencil")
         
         return [deleteAction, editAction]
     }
