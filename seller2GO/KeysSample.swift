@@ -16,4 +16,7 @@ struct KeysSample {
     static let MONGODB_URI = ""
     static let PARSE_MOUNT = ""
     static let SERVER_URL = ""
+    static let TWILIOSID = ""
+    static let TWILIOAUTH = ""
+    static let TWILIONUMBER = ""
 }

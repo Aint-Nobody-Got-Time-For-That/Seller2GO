@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Alamofire
+import PKHUD
 
 class OrderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -16,10 +17,6 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     var order: Order!
     var restaurantName: String!
     var orderItems: [OrderItem] = []
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderItems.count
-    }
     
     func sendMessage(twilioNumber: String, buyerPhoneNumber: String, message: String) {
         let accountSID = Keys.TWILIOSID
@@ -34,7 +31,11 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
                 debugPrint(response)
         }
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return orderItems.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let orderCell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
         orderCell.orderItem = orderItems[indexPath.row]
@@ -44,6 +45,7 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // get order items
         let orderItemsQuery = PFQuery(className: "OrderItem")
         orderItemsQuery.whereKey("order", equalTo: order!)
         
@@ -55,17 +57,36 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print("Error in orderItems query: \(error!)")
             }
         }
-        // print(orderItems)
-        // get order items
         
     }
 
     @IBAction func didTapReady(_ sender: Any) {
-        let twilioNumber = Keys.TWILIONUMBER
-        let message = "Your Order from \(restaurantName!) is Ready!"
-        let buyerNumber = order.phoneNumber
-        sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+
+        let deleteTheseItems: [PFObject] = [order!] + orderItems
+        PFObject.deleteAll(inBackground: deleteTheseItems) { (success: Bool, error: Error?) in
+
+            if success {
+
+                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+
+                    // text buyer
+                    let twilioNumber = Keys.TWILIONUMBER
+                    let message = "Your Order from \(self.restaurantName!) is Ready!"
+                    let buyerNumber = self.order.phoneNumber
+                    self.sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
+                    self.navigationController?.popViewController(animated: true)
+                })
+            } else {
+                print("delete order and order items in background error: \(error!)")
+            }
+        }
+        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
