@@ -12,10 +12,12 @@ import Alamofire
 import PKHUD
 
 class OrderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nav: UINavigationItem!
+
     var order: Order!
-    var restaurantName: String!
+    var restaurant: Restaurant!
     var orderItems: [OrderItem] = []
     
     func sendMessage(twilioNumber: String, buyerPhoneNumber: String, message: String) {
@@ -29,6 +31,26 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
             .authenticate(user: accountSID, password: authToken)
             .responseJSON { response in
                 debugPrint(response)
+        }
+    }
+    
+    @objc func tapRemove(_ sender: Any) {
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
+        let deleteTheseItems: [PFObject] = [order!] + orderItems
+        PFObject.deleteAll(inBackground: deleteTheseItems) { (success: Bool, error: Error?) in
+            
+            if success {
+                
+                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+                    
+                    self.navigationController?.popViewController(animated: true)
+                })
+            } else {
+                print("delete order and order items in background error: \(error!)")
+            }
         }
     }
     
@@ -61,30 +83,11 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @IBAction func didTapReady(_ sender: Any) {
-        
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
-
-        let deleteTheseItems: [PFObject] = [order!] + orderItems
-        PFObject.deleteAll(inBackground: deleteTheseItems) { (success: Bool, error: Error?) in
-
-            if success {
-
-                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
-                PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
-
-                    // text buyer
-                    let twilioNumber = Keys.TWILIONUMBER
-                    let message = "Your Order from \(self.restaurantName!) is Ready!"
-                    let buyerNumber = self.order.phoneNumber
-                    self.sendMessage(twilioNumber: twilioNumber,  buyerPhoneNumber: buyerNumber, message: message)
-                    self.navigationController?.popViewController(animated: true)
-                })
-            } else {
-                print("delete order and order items in background error: \(error!)")
-            }
-        }
-        
+        // text buyer
+        let twilioNumber = Keys.TWILIONUMBER
+        let message = "Your Order from \(self.restaurant!.name) is Ready!"
+        let buyerNumber = self.order.phoneNumber
+        self.sendMessage(twilioNumber: twilioNumber, buyerPhoneNumber: buyerNumber, message: message)
     }
     
     override func viewDidLoad() {
@@ -92,7 +95,12 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        // Do any additional setup after loading the view.
+        
+        let removeBarButtonItem = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(OrderViewController.tapRemove(_:)))
+        removeBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        nav.rightBarButtonItem = removeBarButtonItem
+        
+        nav.title = "Order"
     }
 
 }

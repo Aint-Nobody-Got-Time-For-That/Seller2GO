@@ -13,8 +13,7 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
     
     @IBOutlet weak var tableView: UITableView!
     
-    var restaurantId: String!
-    var restaurantName: String!
+    var restaurant: Restaurant!
     var orders: [Order]  = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,12 +35,11 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
         // Do any additional setup after loading the view.
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let ordersQuery = PFQuery(className: "Order")
-        ordersQuery.whereKey("restaurantID", equalTo: restaurantId!)
+        ordersQuery.whereKey("restaurantID", equalTo: restaurant.objectId!)
         
         ordersQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             
@@ -64,17 +62,7 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
             
             let orderViewController = segue.destination as! OrderViewController
             orderViewController.order = order
-            orderViewController.restaurantName = restaurantName
-            
-            
-            // getting orderItems from order. Have to cast to arrays of dictionaries
-            // For some reason, cannot cast to OrderItem. Have to individually cast each key/value pair
-//            let orderItems = order.value(forKey: "order")! as! [Any]
-//
-//            // array of dictionaries
-//            let items = orderItems[0] as! [[String: Any]]
-//
-//            orderViewController.orderItems = items
+            orderViewController.restaurant = restaurant
         }
     }
 }
