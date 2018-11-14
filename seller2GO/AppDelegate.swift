@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = navController
         }
         
+        
+        
+        
         return true
     }
     
