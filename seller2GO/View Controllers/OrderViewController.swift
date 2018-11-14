@@ -88,8 +88,13 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBAction func didTapReady(_ sender: Any) {
         // text buyer
+        PKHUD.sharedHUD.contentView = PKHUDSuccessView(title: "Messaged!")
+        PKHUD.sharedHUD.show()
+        PKHUD.sharedHUD.hide(afterDelay: 0.3, completion: { (success) in
+        })
+        
         let twilioNumber = Keys.TWILIONUMBER
-        let message = "Your Order from \(self.restaurant!.name) is Ready!"
+        let message = "Your Order from \(self.restaurant!.name) is Ready! The Address is: \(self.restaurant!.street)"
         let buyerNumber = self.order.phoneNumber
         self.sendMessage(twilioNumber: twilioNumber, buyerPhoneNumber: buyerNumber, message: message)
     }
