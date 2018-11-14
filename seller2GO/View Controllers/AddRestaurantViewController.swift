@@ -239,10 +239,12 @@ class AddRestaurantViewController: FormViewController {
         
         // set up nav bar
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(AddRestaurantViewController.tapCancel(_:)))
+        cancelBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.leftBarButtonItem = cancelBarButtonItem
         
         createBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(AddRestaurantViewController.tapCreate(_:)))
         createBarButtonItem.isEnabled = false
+        createBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         nav.rightBarButtonItem = createBarButtonItem
         nav.title = "New Restaurant"
         
