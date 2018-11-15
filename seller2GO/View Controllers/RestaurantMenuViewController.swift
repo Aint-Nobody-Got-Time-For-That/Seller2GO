@@ -166,12 +166,13 @@ class RestaurantMenuViewController: UIViewController, UITableViewDataSource, UIT
         
         let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .plain, target: self, action: #selector(RestaurantMenuViewController.tapBack(_:)))
         backBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        nav.leftBarButtonItem = backBarButtonItem
 
+        self.tabBarController?.title = "\(restaurant.name)'s Menu"
         let addBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(RestaurantMenuViewController.tapAdd(_:)))
         addBarButtonItem.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        nav.rightBarButtonItem = addBarButtonItem
-
-        nav.title = "\(restaurant.name)'s Menu"
+        
+        self.tabBarController?.title = "\(restaurant.name)'s Menu"
+        self.tabBarController?.navigationItem.leftBarButtonItem = backBarButtonItem
+        self.tabBarController?.navigationItem.rightBarButtonItem = addBarButtonItem
     }
 }
