@@ -37,6 +37,8 @@ class RestaurantOrdersViewController: UIViewController, UITableViewDataSource, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "\(restaurant.name) Orders"
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
         
         let ordersQuery = PFQuery(className: "Order")
         ordersQuery.whereKey("restaurantID", equalTo: restaurant.objectId!)
