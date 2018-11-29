@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class RestaurantOrderCell: UITableViewCell {
+class RestaurantOrderCell: SwipeTableViewCell {
 
     @IBOutlet weak var buyerLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!

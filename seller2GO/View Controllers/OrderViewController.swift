@@ -65,6 +65,7 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let orderCell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
         orderCell.orderItem = orderItems[indexPath.row]
+        orderCell.selectionStyle = .none
         return orderCell
     }
 
